@@ -65,7 +65,6 @@ export class DialogEngine {
       const workflowEnded = currentNode.type === 'success' || currentNode.type === 'failure'
       if (workflowEnded && workflow) {
         workflow.success = currentNode.type === 'success'
-        workflow.status = 'completed'
       }
 
       if (currentNode.type === 'prompt' && !context.activePrompt && !this._getCurrentNodeValue(event, 'processed')) {
@@ -110,6 +109,7 @@ export class DialogEngine {
         this.copyVarsToParent(subFlow, currentNode, event)
         // TODO remove this hack
         event.state.session.nduContext!.last_topic = parseFlowName(context.currentFlow!).topic!
+        event.state.session.workflows = _.omitBy(event.state.session.workflows, x => x.status === 'completed')
       }
     }
 
@@ -188,10 +188,10 @@ export class DialogEngine {
     const nextFlow = this._findFlow(event.botId, `${nextFlowName}.flow.json`)
     const isSubFlow = nextFlow.type === 'reusable'
 
-    event.state.session.workflows = _.omitBy(event.state.session.workflows, x => x.status === 'completed')
-
     // This workflow doesn't already exist, so we add it
     if (!workflow) {
+      event.state.session.workflows = _.omitBy(event.state.session.workflows, x => x.status === 'completed')
+
       BOTPRESS_CORE_EVENT('bp_core_workflow_started', {
         botId: event.botId,
         channel: event.channel,
