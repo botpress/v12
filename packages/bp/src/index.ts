@@ -9,6 +9,9 @@ const getos = require('./common/getos')
 const { getAppDataPath } = require('./core/misc/app_data')
 const { Debug } = require('./debug')
 const metadataContent = require('./metadata.json')
+const { fixPathResolve } = require('./fix-path-resolve')
+
+fixPathResolve()
 
 const printPlainError = err => {
   console.error('Error starting botpress')
