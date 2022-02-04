@@ -1,0 +1,24 @@
+name: Publish Reference
+on:
+  push:
+    branches:
+      - llp_action_test
+jobs:
+  fetch_changelogs:
+    name: Fetch Release Changelogs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12.18.1'
+          cache: 'yarn'
+      - name: Fetch Changelogs
+        id: fetch_changelogs
+        uses: botpress/gh-actions/fetch_release_changelogs@next
+        with:
+          repos: '[ "studio", "messaging", "nlu" ]'
+      - name: Display Details
+        run: |
+          echo "Changelog: ${{ steps.fetch_changelogs.outputs.changelogs }}"
