@@ -29,7 +29,7 @@ export async function copyDir(src: string, dest: string, filter: CopyFilter = de
         ensureDirSync(fileDir)
       }
 
-      const buffer = await Promise.fromCallback(cb => {
+      const buffer = await Promise.fromCallback<Buffer>(cb => {
         fs.readFile(path.join(src, f), cb)
       })
 

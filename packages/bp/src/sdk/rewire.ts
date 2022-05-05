@@ -71,7 +71,7 @@ function overwritePaths(paths: string[]) {
   reloadPaths()
 }
 
-global.require = {
+global.requireExtra = {
   addToNodePath,
   getPaths,
   overwritePaths
@@ -79,7 +79,7 @@ global.require = {
 
 addToNodePath(syspath.resolve(__dirname, '../')) // 'bp/' directory
 
-const rewire = function(this: NodeRequireFunction, mod: string) {
+const rewire = function(this: any, mod: string) {
   if (mod === 'botpress/sdk') {
     return originalRequire.apply(this, ['core/app/sdk_impl'])
   }

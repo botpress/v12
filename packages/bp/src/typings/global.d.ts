@@ -1,20 +1,24 @@
-declare namespace NodeJS {
-  export interface ExtraRequire {
-    addToNodePath(path: string): void
-    getPaths(): string[]
-    overwritePaths(paths: string[])
-  }
+// declare global {
+//   var NEW_GLOBAL: string;
+// }
 
-  export interface Global {
-    printErrorDefault(err: unknown): void
-    DEBUG: IDebug
-    BOTPRESS_CORE_EVENT: IEmitCoreEvent
-    BOTPRESS_CORE_EVENT_TYPES: BotpressCoreEvents
-    require: ExtraRequire
-    rewire: (name: string) => string
-    printBotLog(botId: string, args: any[]): void
-    printLog(args: any[]): void
-  }
+declare namespace NodeJS {
+  // export interface ExtraRequire {
+  //   addToNodePath(path: string): void
+  //   getPaths(): string[]
+  //   overwritePaths(paths: string[])
+  // }
+
+  // export interface Global {
+  //   printErrorDefault(err: unknown): void
+  //   DEBUG: IDebug
+  //   BOTPRESS_CORE_EVENT: IEmitCoreEvent
+  //   BOTPRESS_CORE_EVENT_TYPES: BotpressCoreEvents
+  //   require: ExtraRequire
+  //   rewire: (name: string) => string
+  //   printBotLog(botId: string, args: any[]): void
+  //   printLog(args: any[]): void
+  // }
 
   export interface Process {
     VERBOSITY_LEVEL: number
@@ -70,7 +74,7 @@ declare namespace NodeJS {
 }
 
 declare var process: NodeJS.Process
-declare var global: NodeJS.Global
+// declare var global: NodeJS.Global
 declare type PRO_FEATURES = 'seats'
 
 /**
@@ -377,3 +381,4 @@ interface IEmitCoreEvent {
 }
 
 declare var BOTPRESS_CORE_EVENT: IEmitCoreEvent
+// export {}

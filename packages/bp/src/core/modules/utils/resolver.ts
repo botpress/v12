@@ -42,11 +42,11 @@ export class ModuleResolver {
     const nodeModuleDir = path.resolve(modulePath, 'node_modules')
 
     if (fs.existsSync(nodeProductionModuleDir)) {
-      global.require.addToNodePath(nodeProductionModuleDir)
+      global.requireExtra.addToNodePath(nodeProductionModuleDir)
     }
 
     if (fs.existsSync(nodeModuleDir)) {
-      global.require.addToNodePath(nodeModuleDir)
+      global.requireExtra.addToNodePath(nodeModuleDir)
     }
   }
 
@@ -142,12 +142,12 @@ export class ModuleResolver {
   }
 
   requireModule(moduleLocation: string): ModuleEntryPoint {
-    const originalRequirePaths = global.require.getPaths()
+    const originalRequirePaths = global.requireExtra.getPaths()
 
     try {
       // We temporarily bump the module's node_modules in priority
       // So that it loads the local versions of its own dependencies
-      global.require.overwritePaths([
+      global.requireExtra.overwritePaths([
         path.join(moduleLocation, 'node_production_modules'),
         path.join(moduleLocation, 'node_modules'),
         ...originalRequirePaths
@@ -156,7 +156,7 @@ export class ModuleResolver {
       const req = require(moduleLocation)
       return req.default ? req.default : req
     } finally {
-      global.require.overwritePaths(originalRequirePaths)
+      global.requrequireExtraire.overwritePaths(originalRequirePaths)
     }
   }
 }

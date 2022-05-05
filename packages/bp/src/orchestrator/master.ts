@@ -53,7 +53,7 @@ interface ProcessDetails {
 }
 
 const debug = DEBUG('orchestrator')
-const msgHandlers: { [messageType: string]: (message: any, worker: cluster.Worker) => void } = {}
+const msgHandlers: { [messageType: string]: (message: any, worker: Worker) => void } = {}
 const maxServerReboots = process.core_env.BP_MAX_SERVER_REBOOT || 2
 
 /**
@@ -63,7 +63,7 @@ const maxServerReboots = process.core_env.BP_MAX_SERVER_REBOOT || 2
  * Exit code 0 or undefined: Success (kill worker & master)
  * Exit code 1: Error (will try to respawn workers)
  */
-export const registerMsgHandler = (messageType: string, handler: (message: any, worker: cluster.Worker) => void) => {
+export const registerMsgHandler = (messageType: string, handler: (message: any, worker: Worker) => void) => {
   msgHandlers[messageType] = handler
 }
 
@@ -165,7 +165,7 @@ export const setupMasterNode = (logger: sdk.Logger) => {
     debug('Process exiting %o', { workerId: id, code, signal, exitedAfterDisconnect })
   })
 
-  cluster.on('message', (worker: cluster.Worker, message: any) => {
+  cluster.on('message', (worker: Worker, message: any) => {
     const handler = msgHandlers[message.type]
     if (!handler) {
       return logger.error(`No handler configured for ${message.type}`)

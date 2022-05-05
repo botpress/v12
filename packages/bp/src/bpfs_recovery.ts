@@ -75,7 +75,7 @@ export default async (argv, action) => {
     const destFolder = path.dirname(dest || file)
     const destFile = path.basename(dest || file)
 
-    await ghost.root().upsertFile(destFolder, destFile, fs.readFileSync(path.resolve(file), 'UTF-8'))
+    await ghost.root().upsertFile(destFolder, destFile, fs.readFileSync(path.resolve(file), { encoding: 'utf-8' }))
     console.info(chalk.green(`File "${file}" saved at ${path.join(destFolder, destFile)}`))
   }
 

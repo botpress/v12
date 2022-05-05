@@ -54,7 +54,7 @@ export const startServer = async (config: BotpressConfig) => {
     const hostname = config.httpServer.host === 'localhost' ? undefined : config.httpServer.host
 
     await Promise.fromCallback(callback => {
-      httpServer.listen(port, hostname, config.httpServer.backlog, callback)
+      httpServer.listen(port, hostname, config.httpServer.backlog, () => callback(undefined))
     })
   })
 }

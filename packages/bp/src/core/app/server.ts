@@ -432,7 +432,7 @@ export class HTTPServer {
 
     const hostname = config.host === 'localhost' ? undefined : config.host
     await Promise.fromCallback(callback => {
-      this.httpServer.listen(process.PORT, hostname, config.backlog, callback)
+      this.httpServer.listen(process.PORT, hostname, config.backlog, () => callback(undefined))
     })
 
     return this.app

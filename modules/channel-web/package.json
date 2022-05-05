@@ -21,7 +21,7 @@
     "@types/lru-cache": "^5.1.1",
     "@types/mime": "^2.0.3",
     "@types/multer-s3": "^2.7.9",
-    "@types/node": "^10.10.3",
+    "@types/node": "^16.11.33",
     "@types/react-intl": "^2.3.17"
   },
   "dependencies": {

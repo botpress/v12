@@ -5,7 +5,7 @@
   "publisher": "botpress",
   "main": "dist/index.js",
   "engines": {
-    "node": ">=10"
+    "node": ">=16"
   },
   "scripts": {
     "watch": "node ./webpack.config.js --watch",
