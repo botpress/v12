@@ -9,7 +9,6 @@ interface CssExports {
   'agentList': string;
   'agentListItem': string;
   'app': string;
-  'badge': string;
   'bot': string;
   'bpwChatBubble': string;
   'bpwChatBubbleContent': string;
@@ -23,7 +22,6 @@ interface CssExports {
   'dot': string;
   'emptyContainer': string;
   'handoffItem': string;
-  'handoffItemUrgent': string;
   'handoffList': string;
   'hitlToolBar': string;
   'info': string;

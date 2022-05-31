@@ -17,10 +17,10 @@ export interface Config {
   messageCount: number
 
   /**
-   * @param handoffAlert Amount of time in minutes before an unassigned handoff turns yellow.
-   * @default 5
+   * @param handoffAlert List of elapsed time in which a handoff will turn a certain color. Time in milliseconds, colors in HEX codes
+   * @default []
    */
-  handoffAlert?: number
+  handoffAlerts?: IHandoffAlert[]
 
   /**
    * @param defaultUsername Whether or not to display a random username for anonymous users
@@ -66,6 +66,20 @@ export interface Config {
 export interface IShortcut {
   name: string
   value: string
+}
+
+export interface IHandoffAlert {
+  /**
+   * @param time
+   * @example 1500
+   */
+  time: number
+
+  /**
+   * @param color
+   * @example 1500
+   */
+  color: string
 }
 
 export interface IAutoComplete {

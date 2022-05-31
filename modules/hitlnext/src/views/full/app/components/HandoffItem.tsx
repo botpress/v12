@@ -19,6 +19,7 @@ const HandoffItem: FC<IHandoff> = ({ createdAt, id, status, agentId, userConvers
 
   const [readStatus, setReadStatus] = useState(false)
   const [fromNow, setFromNow] = useState(moment(createdAt).fromNow())
+  const [handoffStyle, setHandoffStyle] = useState({})
 
   async function handleSelect(id: string) {
     dispatch({ type: 'setSelectedHandoffId', payload: id })
@@ -47,6 +48,13 @@ const HandoffItem: FC<IHandoff> = ({ createdAt, id, status, agentId, userConvers
     }
   }, [userConversation, state.reads])
 
+  useEffect(() => {
+    const interval = setInterval(() => setHandoffStyle(getHandoffStyle(createdAt, status)), 1000)
+    return () => {
+      clearInterval(interval)
+    }
+  }, [])
+
   const displayAgentName = () => {
     if (agentId && agentId === state.currentAgent?.agentId) {
       return lang.tr('module.hitlnext.handoff.you')
@@ -55,20 +63,30 @@ const HandoffItem: FC<IHandoff> = ({ createdAt, id, status, agentId, userConvers
       return agentName(agent)
     }
   }
+
   const getHandoffStyle = (createdAt, status) => {
-    const defaultHandoffAlert = 5
-    if (
-      status === 'pending' &&
-      moment().diff(moment(createdAt)) > ms(`${state.config.handoffAlert || defaultHandoffAlert}m`)
-    ) {
-      return style.handoffItemUrgent
+    if (status === 'pending') {
+      const alerts = (state.config.handoffAlerts || [{ time: 300000, color: '#FFE5B4D9' }])
+        .slice()
+        .sort((a, b) => (a.time > b.time ? 1 : -1))
+
+      let color = ''
+      for (let i = 0; i < alerts.length; i++) {
+        if (moment().diff(moment(createdAt)) >= alerts[i].time) {
+          if (i === alerts.length - 1 || moment().diff(moment(createdAt)) <= alerts[i + 1].time) {
+            color = alerts[i].color
+          }
+        }
+      }
+
+      return { backgroundColor: color }
     }
-    return style.handoffItem
   }
 
   return (
     <div
-      className={cx(getHandoffStyle(createdAt, status), { [style.active]: state.selectedHandoffId === id })}
+      className={cx({ [style.handoffItem]: true }, { [style.active]: state.selectedHandoffId === id })}
+      style={handoffStyle}
       onClick={() => handleSelect(id)}
     >
       {!readStatus && <span className={style.unreadDot}></span>}

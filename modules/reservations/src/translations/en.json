@@ -1,0 +1,16 @@
+{
+  "fullName": "Reservations",
+  "skills": {
+    "createReservation": "Create Reservation"
+  },
+  "types": {
+    "reservationCard": {
+      "description": "A message that displays reservation information",
+      "confirmationNumber": "The confirmation number",
+      "customer": "The customer",
+      "numberOfGuests": "The number of guests",
+      "date": "The date",
+      "time": "The time"
+    }
+  }
+}
