@@ -43,6 +43,27 @@ const DEBOUNCE_DELAY = ms('2s')
 // node_production_modules are node_modules that are compressed for production
 const EXCLUDES = ['**/node_modules/**', '**/node_production_modules/**']
 
+const ALLOWED_BUILTIN_MODULES = [
+  'assert',
+  'buffer',
+  'crypto',
+  'dgram',
+  'dns',
+  'domain',
+  'events',
+  'http',
+  'https',
+  'net',
+  'path',
+  'querystring',
+  'readline',
+  'stream',
+  'string_decoder',
+  'url',
+  'zlib',
+  'util'
+]
+
 export type RunType = 'trusted' | 'legacy' | 'http'
 
 export interface ActionServerResponse {
@@ -327,25 +348,31 @@ export class ScopedActionService {
     }
   }
 
-  private async _runInVm(code: string, dirPath: string, args: any, _require: Function) {
-    const modRequire = new Proxy(
+  private async _runInVm(code: string, dirPath: string, args: any, _require: (module: string) => string) {
+    /*     const modRequire = new Proxy(
       {},
       {
         get: (_obj, prop) => _require(prop)
       }
-    )
+    ) */
 
     const vm = new NodeVM({
       wrapper: 'none',
       sandbox: args,
       require: {
+        builtin: ALLOWED_BUILTIN_MODULES,
         external: true,
-        mock: modRequire
+        context: 'sandbox',
+        resolve: _require,
+        mock: {
+          child_process: {}
+        }
       },
       timeout: 5000
     })
 
     const runner = new VmRunner()
+    console.log('[action-service] running in VM')
     return runner.runInVm(vm, code, dirPath)
   }
 
@@ -367,7 +394,7 @@ export class ScopedActionService {
 
     const { code, dirPath, lookups, action } = await this._getActionDetails(actionName)
 
-    const _require = prepareRequire(dirPath, lookups)
+    const _require = prepareRequire(dirPath, lookups, ALLOWED_BUILTIN_MODULES)
 
     return { code, _require, dirPath, action }
   }

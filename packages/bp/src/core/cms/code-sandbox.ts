@@ -74,6 +74,7 @@ export class SafeCodeSandbox {
   }
 
   async run(fileName: string): Promise<any> {
+    console.log('[code-sandbox] Running', fileName)
     try {
       if (process.DISABLE_CONTENT_SANDBOX) {
         return require(this.filesMap[fileName])

@@ -38,22 +38,41 @@ export const requireFromString = (code: string, moduleName: string, parentScript
   return (requireCache[requireKey] = mod.exports)
 }
 
-export const requireAtPaths = (module: string, locations: string[], scriptPath?: string) => {
-  const requireKey = getRequireCacheKey(scriptPath, module)
+export const requireAtPaths = (
+  module: string,
+  locations: string[],
+  scriptPath?: string,
+  allowedBuiltinModules?: string[]
+) => {
+  console.log('requireAtPaths', module, locations, scriptPath)
+  //const requireKey = getRequireCacheKey(scriptPath, module)
+  //console.log('requireKey', requireKey)
 
-  if (requireCache[requireKey] && scriptPath) {
-    return requireCache[requireKey]
+  //if (requireCache[requireKey] && scriptPath) {
+  //  console.log('requireCache[requireKey]', requireCache[requireKey])
+  //  return requireCache[requireKey]
+  //}
+
+  try {
+    console.log('loc 3', module)
+    if (require.resolve(module)) {
+      return module //(requireCache[requireKey] = require(module))
+    }
+  } catch (err) {
+    throw new Error(`Module "${module}" not found. Tried these locations: "${locations.join(', ')}"`)
   }
 
   const lookups = buildLookupPaths(module, locations)
 
+  console.log('lookups', lookups)
   for (const loc of lookups) {
     try {
       if (['.js', '.json'].includes(path.extname(loc))) {
         if (!fs.existsSync(loc)) {
           continue
         }
-        return (requireCache[requireKey] = require(loc))
+        console.log('loc 1', loc)
+        return loc //(requireCache[requireKey] = require(loc))
       } else {
         // package.json
         const pkgPath = path.join(loc, 'package.json')
@@ -65,17 +84,12 @@ export const requireAtPaths = (module: string, locations: string[], scriptPath?:
           continue
         }
         const pkgEntry = path.join(loc, pkg.main)
-        return (requireCache[requireKey] = require(pkgEntry))
+        console.log('loc 2', pkgEntry)
+        return pkgEntry //(requireCache[requireKey] = require(pkgEntry))
       }
     } catch (err) {
       throw new Error(`Error while loading module "${module}" at location "${locations.join(', ')}": ${err}`)
     }
-  }
-
-  try {
-    return (requireCache[requireKey] = require(module))
-  } catch (err) {
-    throw new Error(`Module "${module}" not found. Tried these locations: "${locations.join(', ')}"`)
   }
 }
 

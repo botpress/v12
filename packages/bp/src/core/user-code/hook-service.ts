@@ -254,7 +254,7 @@ export class HookService {
   private _prepareRequire(fullPath: string, hookType: string, botId?: string) {
     const lookups = getBaseLookupPaths(fullPath, hookType, botId)
 
-    return (module: string) => requireAtPaths(module, lookups, fullPath)
+    return (module: string) => require(requireAtPaths(module, lookups, fullPath) || '')
   }
 
   private async runScript(hookScript: HookScript, hook: Hooks.BaseHook) {

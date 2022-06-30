@@ -25,8 +25,12 @@ export const getBaseLookupPaths = (fullPath: string, lastPathPart: string, botId
   return lookups
 }
 
-export const prepareRequire = (fullPath: string, lookups: string[]) => {
-  return module => requireAtPaths(module, lookups, fullPath)
+export const prepareRequire = (fullPath: string, lookups: string[], allowedBuiltinModules?: string[]) => {
+  return (module: string) => {
+    const path = requireAtPaths(module, lookups, fullPath, allowedBuiltinModules)
+    console.log('path', path)
+    return path || ''
+  }
 }
 
 export const prepareRequireTester = (parentScript: string, lookups: string[]) => {
