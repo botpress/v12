@@ -14,7 +14,7 @@
     "version": "1.0.2"
   },
   "studio": {
-    "version": "0.0.62"
+    "devBranch": "fix_undefined_item_issue"
   },
   "messaging": {
     "version": "1.2.7"
