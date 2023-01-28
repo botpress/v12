@@ -148,6 +148,17 @@ export const registerRouter = async (bp: typeof sdk, app: NLUApplication) => {
       return mapError({ botId, lang, error }, res)
     }
   })
+
+  router.post('/forceUnhealth/:unhealth', needsWriteMW, async (req, res) => {
+    const { unhealth } = req.params
+    try {
+      // @ts-ignore
+      process.nlu_unhealth = yn(unhealth) || false
+      res.sendStatus(200)
+    } catch (error) {
+      throw new Error(`Could not force unhealth: ${error}`)
+    }
+  })
 }
 
 export const removeRouter = (bp: typeof sdk) => {

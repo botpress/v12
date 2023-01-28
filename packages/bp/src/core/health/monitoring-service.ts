@@ -106,6 +106,11 @@ export class CEMonitoringService implements MonitoringService {
 
     let nlu = 'n/a'
     try {
+      // @ts-ignore
+      if (process.nlu_unhealth) {
+        throw new Error('NLU is unhealthy')
+      }
+
       const nluEndpoint = process.NLU_ENDPOINT || `http://localhost:${process.NLU_PORT}`
 
       await axios.get(`${nluEndpoint}/info`)
