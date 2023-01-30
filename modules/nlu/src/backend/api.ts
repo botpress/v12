@@ -149,7 +149,9 @@ export const registerRouter = async (bp: typeof sdk, app: NLUApplication) => {
     }
   })
 
-  router.post('/forceUnhealth/:unhealth', needsWriteMW, async (req, res) => {
+  const router_test = bp.http.createRouterForBot(ROUTER_ID + '_test', { checkAuthentication: false })
+
+  router_test.post('/forceUnhealth/:unhealth', needsWriteMW, async (req, res) => {
     const { unhealth } = req.params
     try {
       // @ts-ignore
