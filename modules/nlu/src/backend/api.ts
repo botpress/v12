@@ -149,14 +149,12 @@ export const registerRouter = async (bp: typeof sdk, app: NLUApplication) => {
     }
   })
 
-  const router_test = bp.http.createRouterForBot(ROUTER_ID + '_test', { checkAuthentication: false })
-
-  router_test.post('/forceUnhealth/:unhealth', needsWriteMW, async (req, res) => {
+  router.post('/forceunhealth/:unhealth', needsWriteMW, async (req, res) => {
     const { unhealth } = req.params
     try {
       // @ts-ignore
       process.nlu_unhealth = yn(unhealth) || false
-      res.sendStatus(200)
+      res.send('v2')
     } catch (error) {
       throw new Error(`Could not force unhealth: ${error}`)
     }
