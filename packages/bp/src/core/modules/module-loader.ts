@@ -309,6 +309,8 @@ export class ModuleLoader {
       } catch (err) {
         this.logger.warn(`Error in module "${name}" 'onServerReady'. Module will still be loaded. Err: ${err.message}`)
       }
+      this.logger.info(`Awaiting for 1000 miliseconds to load the onServerStarted module hook for ${name}`)
+      await new Promise(resolve => setTimeout(resolve, 1000))
     }
 
     AppLifecycle.setDone(AppLifecycleEvents.MODULES_READY)
