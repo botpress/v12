@@ -16,7 +16,7 @@ If you are using Linux, you must use the `sudo snap install Botpress_VERSION_NUM
  
 ## Alternative - Download Binaries
 
-This option is useful if you want to run Botpress with special parameters, customize it for server environments, or use it in lightweight Linux desktop environments. <!-- What is special if I download the latest from the download page here? -->
+This option is useful if you want to run Botpress with special parameters, run it from a server, or in lightweight Linux desktop environments. <!-- What is special if I download the latest from the download page here? -->
 
 Download the latest stable binaries from the [**download page**](https://botpress.com/download). You can also find all versions and nightly builds in our public [**S3 Bucket**](https://s3.amazonaws.com/botpress-binaries/index.html).
 
