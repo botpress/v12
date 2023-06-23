@@ -41,6 +41,10 @@ Alternatively, start Botpress from the terminal using the command:
 ./bp
 ```
 
+To see all the commands available, run `./bp --help`.
+
+![CLI Start](/assets/cli-help.png)
+
 :::note
 The first time you run Botpress, the built-in modules take some time to install. Subsequent runs will be faster.
 :::
@@ -109,12 +113,8 @@ $ ./bp
 06/02/2021 07:24:29.912 launcher NLU Server is ready at http://localhost:3200/
 ```
 
-### Alternative - Commands
 <!-- for me this would go up to the previous paragraph -->
 
-You may also start Botpress Server using the Command Line Interface (CLI). To see all the commands available, run `./bp --help`.
-
-![CLI Start](/assets/cli-help.png)
 
 ## Learn More
 
