@@ -5,22 +5,23 @@ title: Installation
 
 ---
 
-Getting started with Botpress is easy. We build and distribute binaries of the latest stable version and nightly builds of the Github master branch and also have a Desktop app.
+Installing Botpress is easy. We build and distribute binaries of the latest stable version (and nightly builds) of the [GitHub master branch](https://github.com/botpress/botpress/releases). There is also a Desktop app. <!-- haven't found it, can we link to it? Or is it in the release package? -->
 
 ## Quick Install
 
-Head over to the [**download page**](https://botpress.com/download) for the latest version, and download and install according to your OS.
-If you are using linux, you must use the `sudo snap install Botpress_VERSION_NUMBER.snap --force-dangerous` command. You can then load Botpress by searching for the app on your operating system.
- 
+This option provides standard installation without any specific customization or advanced configuration and is the recommended straightforward way to download and install the latest version of Botpress.
 
+Head over to the [**download page**](https://botpress.com/download). Download and install the latest Botpress version according to your operating system.
+If you are using Linux, you must use the `sudo snap install Botpress_VERSION_NUMBER.snap --force-dangerous` command. You can then load Botpress by searching for the app on your operating system.
+ 
 ## Alternative - Download Binaries
 
-Binaries are useful if you want to run Botpress with special parameters, or if you want to run it from a server, or lightweight environment.
+This option is useful if you want to run Botpress with special parameters, customize it for server environments, or use it in lightweight Linux desktop environments. <!-- What is special if I download the latest from the download page here? -->
 
-The latest stable binaries are available for download [**here**](https://botpress.com/download).  Alternatively, you may find all the versions and nightly builds in our public [**S3 Bucket**](https://s3.amazonaws.com/botpress-binaries/index.html).
-
+Download the latest stable binaries from the [**download page**](https://botpress.com/download). You can also find all versions and nightly builds in our public [**S3 Bucket**](https://s3.amazonaws.com/botpress-binaries/index.html).
 
 ## Alternative - Install Binaries
+<!-- Shouldn't this be "Install Botpress" isn't that required for both the quick install and the binaries? -->
 
 To install Botpress, unzip the file you download somewhere on your computer. Make sure that your computer has at least:
 
@@ -30,20 +31,21 @@ To install Botpress, unzip the file you download somewhere on your computer. Mak
 - The right to read/write to the Botpress directory and subdirectories.
 
 ## Alternative - Starting Botpress Binaries
+<!-- as above. Shouldn't this be "Starting Botpress" isn't that required for both the quick install and the binaries? -->
 
-To start Botpress, all you have to do is double-click on the `bp` file in the directory you extracted Botpress.
+To start Botpress, double-click on the `bp` file in the directory you extracted Botpress.
 
-Alternatively, you can also start it from the terminal using the command:
+Alternatively, start Botpress from the terminal using the command:
 
 ```bash
 ./bp
 ```
 
 :::note
-The first time you run Botpress, the built-in modules take some time to install. The subsequent runs will be much faster.
+The first time you run Botpress, the built-in modules take some time to install. Subsequent runs will be faster.
 :::
 
-Once the modules are installed and loaded, you should end up with something similar to the console log below:
+Once the modules are installed and loaded, you will end up with something similar to the console log below:
 
 ```bash
 User@DESKTOP-T1ORLFU MINGW64 /c/BotpressBinary/botpress-v12_22_0-win-x64
@@ -108,6 +110,7 @@ $ ./bp
 ```
 
 ### Alternative - Commands
+<!-- for me this would go up to the previous paragraph -->
 
 You may also start Botpress Server using the Command Line Interface (CLI). To see all the commands available, run `./bp --help`.
 
@@ -115,7 +118,7 @@ You may also start Botpress Server using the Command Line Interface (CLI). To se
 
 ## Learn More
 
-Here is a video tutorial to help you set up Botpress on your computer. You can slow it down a bit to follow along.
+Here is a video tutorial to help you set up Botpress. Slow the video down a bit to follow along.
 
 - [Setting up on Windows](https://youtu.be/xf246NQyMj4)
 - [Setting up on Mac](https://youtu.be/SBv0QOXyHL4)
