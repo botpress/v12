@@ -5,27 +5,23 @@ title: Flow Memory
 
 --------------------
 
-In a conversation, you may want to ask questions to the user and remember his answers to use them later. You may also want to access the values of system parameters, such as the values of the slots that your chatbot just extracted.
+In a conversation, you may want to ask questions to the user and remember their answers for later use. You may also want to access the values that your chatbot extracts.
 
 ## System Parameters
 
-When a user talks to a chatbot, Botpress tracks all variables and parameters associated with that chatbot as the chatbot transitions from one state to another. If you run the debugger, you will see the tree of all the system parameters that it tracks. Just click the debugger button (circled in red below) and it will open in the bottom panel by default.
+When a user talks to a chatbot, Botpress tracks all variables and parameters associated with that chatbot as the chatbot transitions from one state to another. If you run the debugger, you will see a tree of all tracked system parameters. Click the debugger button in the top right corner and it will open in the bottom panel by default.
 
 ![How to Access Debugger](/assets/access-debugger.png)
 
-You can access these system parameters from the Flow Editor and within your code (including in actions). To do so, all you need to do to reference a parameter by prefixing the path shown in the emulator with `event.`.
+You can access these system parameters from the Flow Editor and within your code (including in actions). To reference a parameter, prefix the path shown in the emulator with `event.`.
 
-For example, the path shown in the debugger to the language parameter is `nlu.language`. You can reference that parameter by adding `event.` to the path shown in the debugger, such as `event.nlu.language`.
+For example, when the path shown in the debugger to the language parameter is `nlu.language`, you can reference that parameter as `event.nlu.language`.
 
 ![NLU Language Emulator](/assets/nlu-emulator.png)
 
 In the Flow Editor, you can access system parameters by bracketing them with two sets of curly brackets.
 
-:::note
-The user input language is `{{event.nlu.language}}`.
-:::
-
-You can also set variables to be the value of a system parameter as follows:
+You can also set variables to be the value of a system parameter, such as the user input language `{{event.nlu.language}}`, as follows:
 
 ![NLU Language Set Variable](/assets/nlu-variable.png)
 
@@ -33,15 +29,15 @@ For raw expressions or code (such as in actions), you don't need the curly brack
 
 ![NLU Language Raw Expression](/assets/nlu-raw-expression.png)
 
-In the same way, as described above, it's possible to access the values of extracted slots by copying the path from the emulator and prefixing it with `event.` (e.g., `{{state.session.slots.food.value}}`) in the flow builder and `state.session.slots.food.value` in code. `food` is a slot that was set up intent by the chatbot builder.
+As above, you can access the values of extracted slots by copying the path from the emulator and prefixing it with `event.` (e.g., `{{state.session.slots.food.value}}`) in the flow builder and `state.session.slots.food.value` in code. `food` is a slot that was set up intentionally by the chatbot builder.
 
 ![Slot Extraction Emulator](/assets/slot-extraction-emulator.png)
 
-As is possible in JavaScript, it is also possible to access the parameters with the following syntax:
+As in JavaScript, you can access parameters using the square bracket notation:
 
 `{{state.session.slots["food"].value}}`
 
-## Variables
+## Memory Variables
 
 There are four different kinds of memories in Botpress; the difference between them is the duration and the scope.
 
@@ -50,22 +46,20 @@ There are four different kinds of memories in Botpress; the difference between t
 - `temp` memory is only kept for the duration of the flow.
 - `bot` memory is the same value for all users of the same chatbot.
 
-## Common Use Case
-
-Most of the time, you will rely on the `user` and `temp` type of memory. The `temp` memory is only alive for the duration of a flow.
+Most of the time, you will rely on the `user` and `temp` type of memory.
 
 ## Setting and Accessing Variables
 
-Variables can be set up or declared using the **Set Variable** action (see the [Dialog Memory](#dialog-memory) section below) or code. When using the **Set Variable** action dialog, the variable is set up and assigned a value.
+Use the **Set Variable** action (see the [Dialog Memory](#dialog-memory) section below) or code to set up or declare variables. When using the **Set Variable** action dialog, the variable is set up and assigned a value.
 
 :::note
-In code, the variable is declared simply by using it.
+In code, the variable is declared when you use it.
 :::
 
 As with system parameters (see [System Parameters](#system-parameter) section), variables can be accessed in the flow builder and the **Set Variable** dialog by bracketing the variables with double curly brackets (such as `{{temp.user_name}}`). 
 
 :::note
-In code or raw expressions, the reference to the variable would not need the double curly brackets.
+In code or raw expressions, the reference to the variable doesn't need the double curly brackets.
 :::
 
 For example, your chatbot would reference the variable as:
@@ -78,6 +72,6 @@ The `bot` memory is the same value for all users of the chatbot. Think of it as 
 
 ## How to Change What's in the Memory?
 
-The most straightforward way is to use the action `base.setVariable`. You only have to specify the type of memory, the variable's name, and what value your chatbot should set it to.
+Use the action `base.setVariable` and specify the type of memory, the variable's name, and what value your chatbot should set it to.
 
-Another common use is with actions. Actions allow you to edit these variables directly. For example, you could write `user.firstname = 'potato'` in your code file to update the user's name.
+Actions in your code file allow you to update these variables directly. For example, `user.firstname = 'potato'` updates the user's first name.
