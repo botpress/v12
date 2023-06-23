@@ -9,7 +9,7 @@ In a conversation, you may want to ask questions to the user and remember their 
 
 ## System Parameters
 
-When a user talks to a chatbot, Botpress tracks all variables and parameters associated with that chatbot as the chatbot transitions from one state to another. If you run the debugger, you will see a tree of all tracked system parameters. Click the debugger button in the top right corner and it will open in the bottom panel by default.
+When a user talks to a chatbot, Botpress tracks all variables and parameters associated with that chatbot as the chatbot transitions from one state to another. If you run the debugger, you can display a tree of all tracked system parameters. To open the tree in the bottom panel (default), click the debugger icon in the top right corner.
 
 ![How to Access Debugger](/assets/access-debugger.png)
 
