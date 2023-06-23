@@ -5,7 +5,7 @@ title: Installation
 
 ---
 
-Installing Botpress is easy. We build and distribute binaries of the latest stable version (and nightly builds) of the [GitHub master branch](https://github.com/botpress/botpress/releases). There is also a Desktop app. <!-- haven't found it, can we link to it? Or is it in the release package? -->
+Getting started with Botpress is easy. We build and distribute binaries of the latest stable version and nightly builds of the Github master branch and also have a Desktop app.
 
 ## Quick Install
 
