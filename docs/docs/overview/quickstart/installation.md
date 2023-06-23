@@ -113,7 +113,6 @@ $ ./bp
 06/02/2021 07:24:29.912 launcher NLU Server is ready at http://localhost:3200/
 ```
 
-<!-- for me this would go up to the previous paragraph -->
 
 
 ## Learn More
