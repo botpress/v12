@@ -75,9 +75,78 @@ export default class Database {
     return `${today}|${botId}|${channel}|${metric}|${subMetric || ''}`
   }
 
-  incrementMetric(botId: string, channel: string, metric: MetricTypes, subMetric?: string) {
+  incrementMetric(botId: string, channel: string, metric: MetricTypes | string, subMetric?: string) {
     const key = this.getCacheKey(botId, channel, metric, subMetric)
     this.cache_entries[key] = (this.cache_entries[key] || 0) + 1
+  }
+
+  decrementMetric(botId: string, channel: string, metric: MetricTypes | string, subMetric?: string) {
+    const key = this.getCacheKey(botId, channel, metric, subMetric)
+    this.cache_entries[key] = (this.cache_entries[key] || 0) - 1
+  }
+
+  async setMetric(
+    botId: string,
+    channel: string,
+    metric: MetricTypes | string,
+    options: { date: Date; count: number },
+    subMetric?: string
+  ) {
+    const isNew = !(await this.getMetric(botId, channel, metric, { date: options.date }, subMetric)).length
+
+    const query = this.knex(TABLE_NAME)
+
+    if (isNew) {
+      query.insert({
+        date: moment(options.date).toDate(),
+        botId,
+        channel,
+        metric,
+        subMetric: subMetric || '',
+        value: options.count
+      })
+    } else {
+      query
+        .where({ botId })
+        .andWhere({ channel, metric })
+        .andWhere(this.knex.date.isSameDay('date', moment(options.date).toDate()))
+
+      if (subMetric) {
+        query.andWhere({ subMetric })
+      }
+
+      query.update({ value: options.count })
+    }
+
+    return query
+  }
+
+  async getMetric(
+    botId: string,
+    channel: string,
+    metric: MetricTypes | string,
+    options?: { startDate?: Date; endDate?: Date; date?: Date },
+    subMetric?: string
+  ) {
+    const startDate = options?.startDate ?? moment().toDate()
+    const endDate = options?.endDate ?? moment().toDate()
+
+    const queryMetric = this.knex(TABLE_NAME)
+      .select()
+      .where({ botId })
+      .andWhere({ channel, metric })
+
+    if (options?.date) {
+      queryMetric.andWhere(this.knex.date.isSameDay('date', options.date))
+    } else if (startDate && endDate) {
+      queryMetric.andWhere(this.knex.date.isBetween('date', startDate, endDate))
+    }
+
+    if (subMetric) {
+      queryMetric.andWhere({ subMetric })
+    }
+
+    return queryMetric
   }
 
   private async flushMetrics() {

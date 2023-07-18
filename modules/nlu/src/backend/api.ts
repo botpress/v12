@@ -1,3 +1,4 @@
+import axios from 'axios'
 import * as sdk from 'botpress/sdk'
 import { Response } from 'express'
 import Joi from 'joi'
@@ -24,6 +25,15 @@ const PredictSchema = Joi.object().keys({
     .default(['global']),
   text: Joi.string().required()
 })
+
+const getIp = req => {
+  let ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+  if (ip) {
+    const list = ip.split(',')
+    ip = list[list.length - 1].trim()
+  }
+  return ip
+}
 
 const makeErrorMapper = (bp: typeof sdk) => (err: { botId: string; lang: string; error: Error }, res: Response) => {
   const { error, botId, lang } = err
@@ -120,6 +130,15 @@ export const registerRouter = async (bp: typeof sdk, app: NLUApplication) => {
         detectedLanguage: nlu.detectedLanguage,
         ms: Date.now() - t0
       }
+
+      const ip = getIp(req)
+
+      if (ip && ip !== '127.0.0.1' && ip !== '::1' && ip !== '::ffff:127.0.0.1') {
+        console.log('is external Call')
+        const axiosConfig = await bp.http.getAxiosConfigForBot(botId, { localUrl: true })
+        await axios.post('/mod/analytics/custom_metrics/external_nlu_predict_calls/increment', {}, axiosConfig)
+      }
+
       res.send({ nlu: election(event, globalConfig) })
     } catch (error) {
       return mapError({ botId, lang, error }, res)
