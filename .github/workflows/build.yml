@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          token: ${{ steps.generate-token.outputs.token }}
+          token: ${{ secrets.PIPELINE_TOKEN }}
           submodules: true
       - uses: actions/setup-node@v2
         with:
