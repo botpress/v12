@@ -134,7 +134,6 @@ export const registerRouter = async (bp: typeof sdk, app: NLUApplication) => {
       const ip = getIp(req)
 
       if (ip && ip !== '127.0.0.1' && ip !== '::1' && ip !== '::ffff:127.0.0.1') {
-        console.log('is external Call')
         const axiosConfig = await bp.http.getAxiosConfigForBot(botId, { localUrl: true })
         await axios.post('/mod/analytics/custom_metrics/external_nlu_predict_calls/increment', {}, axiosConfig)
       }
