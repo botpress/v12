@@ -11,11 +11,8 @@ const axios = require('axios')
  */
 const set = async (metric, group, count = 1) => {
   const axiosConfig = await bp.http.getAxiosConfigForBot(event.botId, { localUrl: true })
-  await axios.post(
-    '/mod/analytics/custom_metrics/set',
-    { name: `${metric}~${group}`, count: Number(count) },
-    axiosConfig
-  )
+  const name = `${metric}~${group}`
+  await axios.post(`/mod/analytics/custom_metrics/${name}/set`, { count: Number(count) }, axiosConfig)
 }
 
 return set(args.metric, args.group, args.count)
