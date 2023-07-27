@@ -1,3 +1,4 @@
+import { Logger } from 'botpress/sdk'
 import { checkRule, CSRF_TOKEN_HEADER_LC, JWT_COOKIE_NAME } from 'common/auth'
 import { RequestWithUser } from 'common/typings'
 import { ALL_BOTS } from 'common/utils'
@@ -222,17 +223,18 @@ const checkPermissions = (workspaceService: WorkspaceService) => (
 }
 
 const mediaPathRegex = new RegExp(/^\/api\/v(\d)\/bots\/[A-Z0-9_-]+\/media\//, 'i')
-export const checkBotVisibility = (configProvider: ConfigProvider, checkTokenHeader: RequestHandler) => async (
-  req,
-  res,
-  next
-) => {
+export const checkBotVisibility = (
+  configProvider: ConfigProvider,
+  checkTokenHeader: RequestHandler,
+  logger: Logger
+) => async (req, res, next) => {
   if (req.params.botId === ALL_BOTS || req.originalUrl.endsWith('env.js')) {
     return next()
   }
 
   try {
     const config = await configProvider.getBotConfig(req.params.botId)
+    logger.debug(`Bot config for ${req.params.botId}: ${JSON.stringify(config)}`)
     if (config.disabled) {
       // The user must be able to get the config to change the bot status
       if (req.originalUrl.endsWith(`/api/v1/studio/${req.params.botId}/config`)) {

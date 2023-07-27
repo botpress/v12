@@ -69,7 +69,7 @@ export class BotsRouter extends CustomRouter {
 
   async setupRoutes(app: express.Express) {
     app.use('/api/v1/bots/:botId', this.router)
-    this.router.use(checkBotVisibility(this.configProvider, this.checkTokenHeader))
+    this.router.use(checkBotVisibility(this.configProvider, this.checkTokenHeader, this.logger))
 
     this.router.use('/converse', this.converseRouter.router)
     this.router.use('/nlu', this.nluRouter.router)
