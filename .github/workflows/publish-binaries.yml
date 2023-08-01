@@ -43,7 +43,7 @@ jobs:
           yarn build --prod
         env:
           EDITION: pro
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PIPELINE_TOKEN }}
 
       - name: Create Archives
         run: yarn cmd archive
