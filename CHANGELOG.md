@@ -26,6 +26,20 @@
 
 
 
+## [12.30.10](https://github.com/botpress/v12/compare/v12.30.9...v12.30.10) (2023-08-01)
+
+
+### Bug Fixes
+
+* **pipeline:** update token ([8da894a](https://github.com/botpress/v12/commit/8da894a762c08d73fab305a466419a753177a7dd))
+
+
+### Features
+
+* **analytics:** add custom metrics back ([80d32a5](https://github.com/botpress/v12/commit/80d32a55e832558afca1e9b914c327b3417f326a))
+
+
+
 ## [12.30.10](https://github.com/botpress/v12/compare/v12.30.9...v12.30.10) (2023-07-28)
 
 
