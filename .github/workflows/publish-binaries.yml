@@ -15,8 +15,11 @@ jobs:
     name: Build and Publish Binaries
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@master
+        with:
+          token: ${{ secrets.PIPELINE_TOKEN }}
+          submodules: true
 
       - uses: actions/setup-node@v2
         with:
