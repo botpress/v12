@@ -152,14 +152,16 @@ export class BotsRouter extends CustomRouter {
    * A good explanation is available here: https://github.com/expressjs/express/issues/2596
    */
   deleteRouter(path: string, app: Express) {
-    const relPath = `/mod/${path}`
+    const relPath = `\\/mod\\/${path}`
 
     // We need to access the global stack and dig in it to find the desired stack
     const mainRouterStack = app._router.stack
     const botRouter = mainRouterStack.find(x => x.name === 'router' && x.regexp.exec('/api/v1/bots/:botId'))
 
     if (botRouter) {
-      botRouter.handle.stack = botRouter.handle.stack.filter(x => !x.regexp.exec(relPath))
+      botRouter.handle.stack = botRouter.handle.stack.filter(
+        x => !x.regexp.toString().includes(`^${relPath}\\/?(?=\\/|$`)
+      )
     }
   }
 
