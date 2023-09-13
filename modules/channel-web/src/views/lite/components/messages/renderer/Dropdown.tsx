@@ -38,7 +38,7 @@ export const Dropdown = (props: Renderer.Dropdown) => {
 
   const renderSelect = inKeyboard => {
     return (
-      <div className={inKeyboard && 'bpw-keyboard-quick_reply-dropdown'}>
+      <div className={(inKeyboard && 'bpw-keyboard-quick_reply-dropdown') || 'bpw-in-message-quick_reply-dropdown'}>
         <div style={{ width: props.width || '100%', display: 'inline-block' }}>
           {props.allowCreation ? (
             <Creatable

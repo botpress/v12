@@ -718,6 +718,11 @@
     margin: 0.2rem 0.5rem;
   }
 
+  .bpw-in-message-quick_reply-dropdown {
+    margin: 0.2rem 0.5rem;
+    width: 200px;
+  }
+
   .bpw-composer {
     position: relative;
     outline: none;
