@@ -1,3 +1,17 @@
+## [12.30.11](https://github.com/botpress/v12/compare/v12.30.10...v12.30.11) (2023-09-13)
+
+
+### Bug Fixes
+
+* **core:** fix delete router ([#1761](https://github.com/botpress/v12/issues/1761)) ([bdabc53](https://github.com/botpress/v12/commit/bdabc533ba630a887e6ab203807b086aad380528))
+
+
+### Features
+
+* **core:** allow to invalidate sessions on password change ([#1747](https://github.com/botpress/v12/issues/1747)) ([0788edd](https://github.com/botpress/v12/commit/0788eddb7bec20d29072c6084997856b19f07465))
+
+
+
 ## [12.30.10](https://github.com/botpress/v12/compare/v12.30.9...v12.30.10) (2023-08-01)
 
 
