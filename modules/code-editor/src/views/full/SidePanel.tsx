@@ -195,6 +195,7 @@ class PanelContent extends React.Component<Props> {
           selectedNode={this.state.selectedNode}
           onNodeStateExpanded={this.updateNodeExpanded}
           onNodeStateSelected={this.updateNodeSelected}
+          moveFile={file => this.setState({ selectedFile: file, isMoveModalOpen: true })}
         />
       </SidePanelSection>
     )
@@ -245,6 +246,7 @@ class PanelContent extends React.Component<Props> {
           selectedNode={this.state.selectedNode}
           onNodeStateExpanded={this.updateNodeExpanded}
           onNodeStateSelected={this.updateNodeSelected}
+          moveFile={file => this.setState({ selectedFile: file, isMoveModalOpen: true })}
         />
       </SidePanelSection>
     )
@@ -281,14 +283,6 @@ class PanelContent extends React.Component<Props> {
           onNodeStateExpanded={this.updateNodeExpanded}
           onNodeStateSelected={this.updateNodeSelected}
           moveFile={file => this.setState({ selectedFile: file, isMoveModalOpen: true })}
-        />
-        <NameModal
-          isOpen={this.state.isMoveModalOpen}
-          toggle={() => this.setState({ isMoveModalOpen: !this.state.isMoveModalOpen })}
-          createFile={createFile}
-          renameFile={this.props.store.renameFile}
-          selectedFile={this.state.selectedFile}
-          files={this.props.files}
         />
       </SidePanelSection>
     )
@@ -354,6 +348,10 @@ class PanelContent extends React.Component<Props> {
     ]
   }
 
+  createFile = async (name: string) => {
+    return this.props.editor.openFile({ name, location: name, content: ' ', type: 'raw' })
+  }
+
   render() {
     const { isAdvanced } = this.props.editor
     return (
@@ -375,6 +373,14 @@ class PanelContent extends React.Component<Props> {
               {this.renderSectionModuleConfig()}
             </React.Fragment>
           )}
+          <NameModal
+            isOpen={this.state.isMoveModalOpen}
+            toggle={() => this.setState({ isMoveModalOpen: !this.state.isMoveModalOpen })}
+            createFile={this.createFile}
+            renameFile={this.props.store.renameFile}
+            selectedFile={this.state.selectedFile}
+            files={this.props.files}
+          />
         </React.Fragment>
 
         <MainLayout.BottomPanel.Register tabName="Code Editor">

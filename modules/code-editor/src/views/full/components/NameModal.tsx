@@ -24,7 +24,13 @@ const NameModal: FC<Props> = props => {
   const [name, setName] = useState('')
 
   useEffect(() => {
-    props.selectedFile ? setName(props.selectedFile.location) : setName('')
+    if (!props.selectedFile) {
+      setName('')
+      return
+    }
+
+    const { location, hookType } = props.selectedFile
+    setName(hookType?.length ? location.replace(hookType + '/', '') : location)
   }, [props.isOpen])
 
   const submit = async e => {
