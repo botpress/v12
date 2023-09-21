@@ -22,6 +22,7 @@ const ERR_CONV_ID_REQ = '`conversationId` is required and must be valid'
 const ERR_BAD_LANGUAGE = '`language` is required and must be valid'
 const ERR_BAD_CONV_ID = "The conversation ID doesn't belong to that user"
 const ERR_BAD_USER_SESSION_ID = 'session id is invalid'
+const MODULE_NAME = 'channel-web'
 
 const USER_ID_MAX_LENGTH = 40
 const MAX_MESSAGE_HISTORY = 100
@@ -257,20 +258,58 @@ export default async (bp: typeof sdk, db: Database) => {
     bp.http.extractExternalToken,
     assertUserInfo({ convoIdRequired: true }),
     asyncMiddleware(async (req: ChatRequest & any, res: Response) => {
-      const { botId, userId } = req
+      const { botId, userId, conversationId } = req
       const payloadValue = req.body.payload || {}
+      const config: Config = await bp.config.getModuleConfigForBot(MODULE_NAME, botId)
 
       await bp.users.getOrCreateUser('web', userId, botId) // Just to create the user if it doesn't exist
 
-      const payload = {
-        text: `Uploaded a file **${req.file.originalname}**`,
-        type: 'file',
+      let text = `Uploaded a file **${req.file.originalname}**`
+
+      const variables = {
         storage: req.file.location ? 's3' : 'local',
         url: req.file.location || req.file.path || undefined,
         name: req.file.filename,
         originalName: req.file.originalname,
         mime: req.file.contentType || req.file.mimetype,
-        size: req.file.size,
+        size: req.file.size
+      }
+
+      if (config.uploadsFileUploadedTextContentElement) {
+        try {
+          if (!config.uploadsFileUploadedTextContentElement.startsWith('#!builtin_text')) {
+            throw new Error('Only builtin_text elements are supported, use #!builtin_text-<elementId>')
+          }
+
+          const userState = await bp.users.getAttributes('web', userId)
+
+          const rendered = (await bp.cms.renderElement(
+            config.uploadsFileUploadedTextContentElement,
+            {
+              ...variables,
+              event: {
+                state: {
+                  user: userState
+                }
+              }
+            },
+            {
+              botId,
+              channel: 'web',
+              target: userId,
+              threadId: conversationId
+            }
+          )) as { text: string }[]
+          text = rendered[0].text
+        } catch (err) {
+          bp.logger.forBot(botId).error(`Error while rendering uploadsFileUploadedTextContentElement: ${err.message}`)
+        }
+      }
+
+      const payload = {
+        text,
+        type: 'file',
+        ...variables,
         payload: payloadValue
       }
 
