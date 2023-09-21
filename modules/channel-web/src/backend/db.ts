@@ -106,7 +106,7 @@ export default class WebchatDb {
   }
 
   async createUserMapping(botId: string, visitorId: string, userId: string): Promise<UserMapping> {
-    let mapping: { botId: string; visitorId: string; userId: string } | undefined = { botId, visitorId, userId }
+    let mapping: UserMapping | undefined = { botId, visitorId, userId }
 
     try {
       try {
@@ -119,13 +119,11 @@ export default class WebchatDb {
           throw err
         }
       }
-
-      return mapping
     } catch (err) {
-      this.bp.logger.error('An error occurred while creating a user mapping.', err)
-
-      return undefined
+      this.bp.logger.forBot(botId).error('An error occurred while creating a user mapping.', err)
     }
+
+    return mapping
   }
 
   async getFeedbackInfoForMessageIds(_target: string, messageIds: string[]) {
