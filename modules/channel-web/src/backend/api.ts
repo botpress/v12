@@ -275,7 +275,7 @@ export default async (bp: typeof sdk, db: Database) => {
         size: req.file.size
       }
 
-      if (config.uploadsFileUploadedTextContentElement) {
+      if (config.uploadsFileUploadedTextContentElement?.length) {
         try {
           if (!config.uploadsFileUploadedTextContentElement.startsWith('#!builtin_text')) {
             throw new Error('Only builtin_text elements are supported, use #!builtin_text-<elementId>')
