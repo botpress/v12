@@ -106,20 +106,18 @@ export default class WebchatDb {
   }
 
   async createUserMapping(botId: string, visitorId: string, userId: string): Promise<UserMapping> {
-    let mapping = { botId, visitorId, userId }
+    let mapping: { botId: string; visitorId: string; userId: string } | undefined = { botId, visitorId, userId }
 
     try {
       try {
         await this.knex('web_user_map').insert(mapping)
         this.cacheByVisitor.set(`${botId}_${visitorId}`, mapping)
       } catch (err) {
-        console.log('Got error in the first try', err)
         // If the mapping already exists, we return it
         mapping = await this.getMappingFromUser(userId)
         if (!mapping) {
           throw err
         }
-        console.log('Got mapping from user that already', mapping)
       }
 
       return mapping
