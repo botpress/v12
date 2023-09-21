@@ -70,12 +70,11 @@ const renderChoicePayload = (content: sdk.ChoiceContent & ExtraChoiceProperties)
       component: 'Dropdown',
       message: content.text,
       buttonText: '',
-      displayInKeyboard: true,
+      displayInKeyboard: !content.displayInMessage,
       options: content.choices.map(c => ({ label: c.title, value: c.value?.toUpperCase() })),
-      width: 300,
+      width: !content.displayInMessage && 300,
       placeholderText: content.dropdownPlaceholder,
-      disableFreeText: content.disableFreeText,
-      displayInMessage: content.displayInMessage
+      disableFreeText: content.disableFreeText
     }
   }
   return {
