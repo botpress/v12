@@ -3,7 +3,7 @@ export interface Config {
    * Specify a builtin_text contentElement to be sent to the user after a file upload
    * example: #!builtin_text-OzpN5X (only builtin_text contentElements are supported)
    *
-   * Varibles available:
+   * Variables available:
    *  storage: 'local' or 's3'
    *  url: URL where the file has been uploaded
    *  originalName: Name that the file had on the user's computer
