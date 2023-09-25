@@ -1,5 +1,19 @@
 export interface Config {
   /**
+   * Specify a builtin_text contentElement to be sent to the user after a file upload
+   * example: #!builtin_text-OzpN5X (only builtin_text contentElements are supported)
+   *
+   * Variables available:
+   *  storage: 'local' or 's3'
+   *  url: URL where the file has been uploaded
+   *  originalName: Name that the file had on the user's computer
+   *  mime: mime type of the file, example: 'image/gif'
+   *  size: size from the file in bytes
+   *
+   * User variables are also available at 'event.state.user' (only user variables are supported)
+   */
+  uploadsFileUploadedTextContentElement?: string
+  /**
    * @default false
    */
   uploadsUseS3?: boolean
