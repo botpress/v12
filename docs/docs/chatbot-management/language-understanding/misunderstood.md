@@ -3,7 +3,7 @@ id: misunderstood
 title: Misunderstood
 ---
 
---------------------
+---
 
 ## Misunderstood Module
 
@@ -64,6 +64,7 @@ Currently, you cannot create a new QnA or a new intent from the **Misunderstood*
 ### Number of Utterances
 
 The NLU engine uses utterances to train your chatbot. Generally speaking, the more utterances, the better because AI models perform better predictions when they have a vast training body. The recommendation is:
+
 - Per Intent: 10 to 20, plus 5 to 10 for every slot
 - Per QNA: 10 to 20
 
@@ -112,16 +113,16 @@ Example: `I have a problem with a PO` and `Purchase order issue`
 - Add different sentence structures
 
 Example:
-      `See notifications`               
-      `How can I view my reminders`
-      `Look at my notifications list`           
-      `Reminder summary`
-      `I want to see my scheduled notifications.` 
-      `Give a list of all my notifications`
-      `View all reminders`              
-      `Where can I find reminders`
+`See notifications`  
+ `How can I view my reminders`
+`Look at my notifications list`  
+ `Reminder summary`
+`I want to see my scheduled notifications.`
+`Give a list of all my notifications`
+`View all reminders`  
+ `Where can I find reminders`
 
-### Stick to One Concept per Intent/QNA 
+### Stick to One Concept per Intent/QNA
 
 Avoid having multiple concepts for one intent.
 
@@ -138,7 +139,7 @@ For straight forward Question and Answers.
 
 ## Influence of Punctuation
 
-- The NLU engine ignores punctuation (except hyphens) when classifying text. 
+- The NLU engine ignores punctuation (except hyphens) when classifying text.
 - Punctuation is considered when working with entities and slots.
 - Hyphenated words are joined as a single token.
 
@@ -168,7 +169,7 @@ A detected intent is the QnA entry that your chatbot elected as the best-fit ans
 
 ### Solved
 
-These are negative feedback items that an assigned collaborator has not yet inspected. 
+These are negative feedback items that an assigned collaborator has not yet inspected.
 
 ### Conversation Preview
 
