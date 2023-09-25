@@ -169,18 +169,18 @@ const ToolTip: FC<ToolTipProps> = ({ childId, children, content, position = 'top
       }
 
       setTimeout(() => {
-        tooltipRef.current.classList.add(style.visible)
+        tooltipRef.current?.classList.add(style.visible)
         if (xClass) {
-          tooltipRef.current.classList.add(xClass)
+          tooltipRef.current?.classList.add(xClass)
         }
         if (yClass) {
-          tooltipRef.current.classList.add(yClass)
+          tooltipRef.current?.classList.add(yClass)
         }
 
-        tooltipRef.current.style.left = inlineStyle.left
-        tooltipRef.current.style.top = inlineStyle.top
-        tipRef.current.style.left = tipPos.left
-        tipRef.current.style.right = tipPos.right
+        tooltipRef.current?.style.left = inlineStyle.left
+        tooltipRef.current?.style.top = inlineStyle.top
+        tipRef.current?.style.left = tipPos.left
+        tipRef.current?.style.right = tipPos.right
       }, hoverOpenDelay || 0)
     }
   }
@@ -222,7 +222,7 @@ const ToolTip: FC<ToolTipProps> = ({ childId, children, content, position = 'top
 
   const hide = () => {
     document.removeEventListener('mousemove', mouseMove)
-    tooltipRef.current.classList.remove(style.visible)
+    tooltipRef.current?.classList.remove(style.visible)
     const body = document.getElementsByTagName('body')[0]
 
     clearTimeout(timeout.current)
