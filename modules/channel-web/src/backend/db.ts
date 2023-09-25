@@ -106,18 +106,24 @@ export default class WebchatDb {
   }
 
   async createUserMapping(botId: string, visitorId: string, userId: string): Promise<UserMapping> {
-    const mapping = { botId, visitorId, userId }
+    let mapping: UserMapping | undefined = { botId, visitorId, userId }
 
     try {
-      await this.knex('web_user_map').insert(mapping)
-      this.cacheByVisitor.set(`${botId}_${visitorId}`, mapping)
-
-      return mapping
+      try {
+        await this.knex('web_user_map').insert(mapping)
+        this.cacheByVisitor.set(`${botId}_${visitorId}`, mapping)
+      } catch (err) {
+        // If the mapping already exists, we return it
+        mapping = await this.getMappingFromUser(userId)
+        if (!mapping) {
+          throw err
+        }
+      }
     } catch (err) {
-      this.bp.logger.error('An error occurred while creating a user mapping.', err)
-
-      return undefined
+      this.bp.logger.forBot(botId).error('An error occurred while creating a user mapping.', err)
     }
+
+    return mapping
   }
 
   async getFeedbackInfoForMessageIds(_target: string, messageIds: string[]) {
