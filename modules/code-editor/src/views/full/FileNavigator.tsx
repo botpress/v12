@@ -212,7 +212,7 @@ class FileNavigator extends React.Component<Props, State> {
     }
 
     const isDisabled = file.name.startsWith('.')
-    const canMove = this.props.store.editor.isAdvanced && this.props.moveFile
+    const canMove = this.props.moveFile
 
     ContextMenu.show(
       <Menu>
