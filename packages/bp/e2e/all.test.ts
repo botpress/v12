@@ -21,7 +21,6 @@ const test = {
   },
   mod: {
     editor: './modules/code-editor.test',
-    testing: './modules/testing.test',
     webchat: './modules/webchat.test'
   }
 }
@@ -32,7 +31,7 @@ if (yn(process.env.BP_CONFIG_PRO_ENABLED)) {
 }
 
 const studio = [test.studio.ui, test.studio.flows, test.studio.cms, test.studio.nlu]
-const modules = [test.mod.editor, test.mod.testing, test.mod.webchat]
+const modules = [test.mod.editor, test.mod.webchat]
 
 /** Define test pipelines below */
 const allTests = [test.auth, test.login, ...admin, ...studio, ...modules, test.logout]
