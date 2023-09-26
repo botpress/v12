@@ -191,7 +191,6 @@ export class ConfigProvider {
       'channel-web',
       'nlu',
       'code-editor',
-      'testing',
       'examples',
       'misunderstood',
       'hitlnext'
