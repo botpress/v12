@@ -1,3 +1,20 @@
+# [12.31.0](https://github.com/botpress/v12/compare/v12.30.11...v12.31.0) (2023-09-26)
+
+
+### Bug Fixes
+
+* **channel-web:** dropdown not rendering below message ([#1764](https://github.com/botpress/v12/issues/1764)) ([bbb0f6e](https://github.com/botpress/v12/commit/bbb0f6ef14cbb8e2c7189709f1b11efa5c2d3bfa))
+* **channel-web:** error reading classList of undefined ([#1771](https://github.com/botpress/v12/issues/1771)) ([80e69f5](https://github.com/botpress/v12/commit/80e69f58c8c7bf77b4c27d7b607b9ff909c5d370))
+* **channel-web:** fix duplicated mapping error ([#1770](https://github.com/botpress/v12/issues/1770)) ([58a8ea9](https://github.com/botpress/v12/commit/58a8ea97206ce4c1777c8a9b34ffa49d821765b7))
+* **code-editor:** can't move files on basic editor ([#1768](https://github.com/botpress/v12/issues/1768)) ([6aeab69](https://github.com/botpress/v12/commit/6aeab69a7af3a8376f936e646fd034d224b84ce5))
+
+
+### Features
+
+* **channel-web:** allow usage of contentElement for fileUpload message ([#1769](https://github.com/botpress/v12/issues/1769)) ([902f02d](https://github.com/botpress/v12/commit/902f02d4bfb891f466ed035175002042ef9c2fce))
+
+
+
 ## [12.30.11](https://github.com/botpress/v12/compare/v12.30.10...v12.30.11) (2023-09-18)
 
 
