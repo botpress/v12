@@ -148,7 +148,7 @@ export class RealtimeService {
         // TODO: There's a conflict between the typings caused by some peer dependencies
         // Related issue: https://github.com/socketio/socket.io-redis-adapter/issues/419
         // @ts-ignore
-        io.adapter(createAdapter(redisFactory('commands'), redisFactory('socket')))
+        io.adapter(createAdapter(redisFactory('commands'), redisFactory('socket'), { key: process.env.BP_REDIS_SCOPE }))
       }
     }
 
