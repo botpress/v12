@@ -103,7 +103,7 @@ export const Checklist: FC<Props> = props => {
           title="Use a Postgres database"
           docs="https://botpress.com/docs/building-chatbots/developers/database#how-to-switch-from-sqlite-to-postgressql"
           status={getEnv('DATABASE_URL').startsWith('postgres') ? 'success' : 'warning'}
-          source={[{ type: 'env', key: 'DATABASE_URL', value: getEnv('DATABASE_URL') }]}
+          source={[{ type: 'env', key: 'DATABASE_URL', value: '**********' }]}
         >
           By default, Botpress uses an SQLite database, which is not recommended in a production environment. Postgres
           is more resilient and allows to run Botpress in cluster mode (using multiple servers to handle the load).
@@ -155,7 +155,7 @@ export const Checklist: FC<Props> = props => {
           title="Enable Redis support"
           status={isSet(getEnv('REDIS_URL')) && isSet(getEnv('CLUSTER_ENABLED')) ? 'success' : 'warning'}
           source={[
-            { type: 'env', key: 'REDIS_URL', value: getEnv('REDIS_URL') },
+            { type: 'env', key: 'REDIS_URL', value: '**********' },
             { type: 'env', key: 'CLUSTER_ENABLED', value: getEnv('CLUSTER_ENABLED') },
             { type: 'env', key: 'BP_REDIS_SCOPE', value: getEnv('BP_REDIS_SCOPE') }
           ]}
