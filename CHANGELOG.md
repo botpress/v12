@@ -1,3 +1,12 @@
+## [12.31.1](https://github.com/botpress/v12/compare/v12.31.0...v12.31.1) (2023-10-24)
+
+
+### Features
+
+* **ui-admin:** not showing secret on the ui ([#1778](https://github.com/botpress/v12/issues/1778)) ([1acb4c4](https://github.com/botpress/v12/commit/1acb4c4349cb63860bd247e41411a6206e6b1293))
+
+
+
 # [12.31.0](https://github.com/botpress/v12/compare/v12.30.11...v12.31.0) (2023-09-26)
 
 
