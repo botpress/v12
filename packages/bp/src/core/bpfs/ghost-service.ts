@@ -423,6 +423,10 @@ export class ScopedGhostService {
     await this.cache.invalidate(this.bufferCacheKey(fileName))
   }
 
+  private async _invalidateFolder(folderName: string) {
+    await this.cache.invalidateStartingWith(folderName)
+  }
+
   async invalidateFile(rootFolder: string, fileName: string): Promise<void> {
     const filePath = this._normalizeFileName(rootFolder, fileName)
     await this._invalidateFile(filePath)
@@ -680,6 +684,7 @@ export class ScopedGhostService {
 
     const folderName = this._normalizeFolderName(folder)
     await this.primaryDriver.deleteDir(folderName)
+    await this._invalidateFolder(folderName)
   }
 
   async directoryListing(
