@@ -52,7 +52,7 @@ export class RealtimeService {
     this.useRedis = process.CLUSTER_ENABLED && Boolean(process.env.REDIS_URL) && process.IS_PRO_ENABLED
 
     PersistedConsoleLogger.LogStreamEmitter.onAny((type, level, message, args) => {
-      this.sendToSocket(RealTimePayload.forAdmins(type as string, { level, message, args }))
+      this.sendToSocket(RealTimePayload.forAdmins(type as string, { level, message, args, type }))
     })
   }
 
