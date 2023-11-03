@@ -10,7 +10,6 @@
 ### Features
 
 * **core:** send type in the logs socket ([#1783](https://github.com/botpress/v12/issues/1783)) ([1b6375a](https://github.com/botpress/v12/commit/1b6375a4374dcaf8be8f86993c6d2017a5b1c06b))
-* **core:** send type in the logs socket ([#1784](https://github.com/botpress/v12/issues/1784)) ([1168ac1](https://github.com/botpress/v12/commit/1168ac1f2fd1c674883e023620d4a940f86dd1b6))
 
 
 
