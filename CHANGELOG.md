@@ -1,3 +1,18 @@
+## [12.31.2](https://github.com/botpress/v12/compare/v12.31.1...v12.31.2) (2023-11-03)
+
+
+### Bug Fixes
+
+* **core:** isolate different environments for realtime ([#1781](https://github.com/botpress/v12/issues/1781)) ([0927e32](https://github.com/botpress/v12/commit/0927e321136f4d933ef3fa7756c52f5bf40ff465))
+* **core:** remove file cache from folder after deleting bot ([#1782](https://github.com/botpress/v12/issues/1782)) ([1e57858](https://github.com/botpress/v12/commit/1e57858c83e74611f62b3fcb2b0ed91c011a66d2))
+
+
+### Features
+
+* **core:** send type in the logs socket ([#1783](https://github.com/botpress/v12/issues/1783)) ([1b6375a](https://github.com/botpress/v12/commit/1b6375a4374dcaf8be8f86993c6d2017a5b1c06b))
+
+
+
 ## [12.31.1](https://github.com/botpress/v12/compare/v12.31.0...v12.31.1) (2023-10-24)
 
 
