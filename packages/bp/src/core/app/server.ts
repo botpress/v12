@@ -243,10 +243,7 @@ export class HTTPServer {
 
     const { keepAliveTimeout } = botpressConfig.httpServer
 
-    console.log({ keepAliveTimeout })
-
     if (keepAliveTimeout && Number.isInteger(keepAliveTimeout)) {
-      console.log('will use: of ' + { keepAliveTimeout })
       this.httpServer.keepAliveTimeout = keepAliveTimeout
     }
 
