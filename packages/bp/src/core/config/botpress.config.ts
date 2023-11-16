@@ -123,6 +123,11 @@ export interface BotpressConfig {
      * @default
      */
     externalUrl: string
+    /**
+     * https://nodejs.org/api/http.html#serverkeepalivetimeout
+     * @default 5000
+     */
+    keepAliveTimeout?: number
     session: {
       /**
        * @default false

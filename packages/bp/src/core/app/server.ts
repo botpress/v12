@@ -241,6 +241,12 @@ export class HTTPServer {
     app.use(process.ROOT_PATH, this.app)
     this.httpServer = createServer(app)
 
+    const { keepAliveTimeout } = botpressConfig.httpServer
+
+    if (keepAliveTimeout && Number.isInteger(keepAliveTimeout)) {
+      this.httpServer.keepAliveTimeout = keepAliveTimeout
+    }
+
     await this.mediaRouter.initialize()
 
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
