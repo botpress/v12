@@ -242,9 +242,17 @@ export class HTTPServer {
     this.httpServer = createServer(app)
 
     const { keepAliveTimeout } = botpressConfig.httpServer
+    console.log({ keepAliveTimeout })
 
     if (keepAliveTimeout && Number.isInteger(keepAliveTimeout)) {
+      console.log('will use keepAliveTimeout of ' + keepAliveTimeout)
       this.httpServer.keepAliveTimeout = keepAliveTimeout
+
+      // https://adamcrowder.net/posts/node-express-api-and-aws-alb-502/
+      // https://github.com/nodejs/node/issues/27363
+      this.httpServer.headersTimeout = keepAliveTimeout + 1000
+
+      console.log('headersTimeout, will use ' + this.httpServer.headersTimeout)
     }
 
     await this.mediaRouter.initialize()
