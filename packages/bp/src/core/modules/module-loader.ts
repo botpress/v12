@@ -176,6 +176,7 @@ export class ModuleLoader {
   }
 
   public async reloadModule(moduleLocation: string, moduleName: string) {
+    console.log('function reloadModule ', { moduleLocation, moduleName })
     const resolver = new ModuleResolver(this.logger)
     const absoluteLocation = await resolver.resolve(moduleLocation)
     await this.unloadModule(absoluteLocation, moduleName)
@@ -201,15 +202,27 @@ export class ModuleLoader {
 
   private async _loadModule(module: ModuleEntryPoint, name: string) {
     try {
+      console.log('__loadModule', { module, name })
       ModuleLoader.processModuleEntryPoint(module, name)
       const api = await createForModule(name)
+      console.log('api created, will execute on server started')
       await module.onServerStarted?.(api)
+
+      console.log('Will set entry points for ' + name + ' with value: ', { module })
 
       this.entryPoints.set(name, module)
 
+      console.log('Will create resource loader for ' + name)
+
       const resourceLoader = new ModuleResourceLoader(this.logger, name, this.ghost)
+
+      console.log(
+        `Created resource loader for ${name}: ${JSON.stringify(resourceLoader.returnLocalMatchers(), null, 2)}`
+      )
       await resourceLoader.enableResources()
+      console.log('runMigrations')
       await resourceLoader.runMigrations()
+      console.log('importResourses')
       await resourceLoader.importResources()
     } catch (err) {
       this.logger.attachError(err).error(`Error in module "${name}" onServerStarted`)

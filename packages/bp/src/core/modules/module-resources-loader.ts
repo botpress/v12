@@ -55,6 +55,14 @@ export class ModuleResourceLoader {
     this.moduleHooksPath = `${this.modulePath}/dist/hooks/`
   }
 
+  async returnLocalMatchers() {
+    return {
+      globalPaths: this.globalPaths,
+      hookMatcher: this.hookMatcher,
+      moduleHooksPath: this.moduleHooksPath
+    }
+  }
+
   async runMigrations() {
     const mfile = `${this.modulePath}/migrations.json`
     if (fse.existsSync(mfile)) {

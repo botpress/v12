@@ -55,7 +55,10 @@ class ModulesRouter extends CustomAdminRouter {
       '/:moduleName/enabled/:enabled',
       this.asyncMiddleware(async (req, res) => {
         const { moduleName } = req.params
+
         const enabled = yn(req.params.enabled)
+
+        console.log(`called /${moduleName}/enabled/${req.params.enabled}`)
 
         const { location, fullPath } = await this._findModule(moduleName)
 
@@ -89,6 +92,8 @@ class ModulesRouter extends CustomAdminRouter {
       '/:moduleName/reload',
       this.asyncMiddleware(async (req, res, _next) => {
         const moduleName = req.params.moduleName
+
+        console.log(`called /${moduleName}/reload`)
         const config = await this.configProvider.getBotpressConfig()
         const module = config.modules.find(x => x.location.endsWith(moduleName))
 
