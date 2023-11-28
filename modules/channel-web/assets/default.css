@@ -28,7 +28,7 @@ body {
 }
 
 .bpw-from-user .bpw-chat-bubble .bpw-chat-bubble-content {
-  background-color: #000000;
+  background-color: #913bff;
 }
 
 .bpw-from-bot .bpw-chat-bubble .bpw-chat-bubble-content {
@@ -49,7 +49,7 @@ body {
 }
 
 .bpw-widget-btn {
-  background-color: #000000;
+  background-color: #913bff;
 }
 
 .bpw-message-read-more {
@@ -67,7 +67,7 @@ body {
 
 .bpw-widget-btn:focus,
 .bpw-widget-btn:hover {
-  background-color: #333;
+  background-color: #06f;
 }
 
 .bpw-chat-container {
@@ -729,6 +729,7 @@ body {
   border-bottom: 1px solid #ccc;
   padding: 0 1rem;
   overflow: hidden;
+  background-color: #913bff;
 }
 
 .bpw-header-title-flexbox {
@@ -764,6 +765,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  color: white;
 }
 
 .bpw-header-subtitle {
@@ -772,7 +774,7 @@ body {
   text-overflow: ellipsis;
   font-size: 0.75rem;
   font-weight: 500;
-  color: #9a9a9a;
+  color: white;
   vertical-align: middle;
   margin-top: 0px;
 }
@@ -823,7 +825,7 @@ body {
 
 .bpw-header-icon svg,
 .bpw-header-icon svg path {
-  fill: #1a1e22;
+  fill: white;
   transition: fill 0.3s;
 }
 
