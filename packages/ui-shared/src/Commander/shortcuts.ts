@@ -75,11 +75,6 @@ export const getCommonShortcuts = () => {
       type: 'goto',
       url: '/server/debug',
       permission: { superAdmin: true }
-    },
-    {
-      label: `${lang('sideMenu.announcements')} - ${lang('sideMenu.latestReleases')}`,
-      type: 'goto',
-      url: '/latestReleases'
     }
   ]
 

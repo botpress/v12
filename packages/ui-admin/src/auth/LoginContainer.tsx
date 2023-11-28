@@ -37,7 +37,7 @@ const LoginContainer: FC<Props> = props => {
           {props.poweredBy && (
             <div className={cx('homepage', style.homepage)}>
               <p>
-                {lang.tr('admin.poweredBy')} <a href="https://botpress.com">Botpress</a>
+                {lang.tr('admin.poweredBy')} <a href="https://getchato.ai/">ChatO</a>
               </p>
             </div>
           )}
