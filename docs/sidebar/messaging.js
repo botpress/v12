@@ -11,7 +11,7 @@ module.exports = [
   {
     type: "category",
     collapsible: false,
-    label: "Botpress Webchat",
+    label: "Chato Webchat",
     items: [
       {
         type: "category",
@@ -19,18 +19,16 @@ module.exports = [
         label: "Website Embedding",
         link: {
           type: "doc",
-          id: "messaging-channels/botpress-webchat/website-embedding/website-embedding"
+          id:
+            "messaging-channels/botpress-webchat/website-embedding/website-embedding"
         },
-        items: [
-        ]
+        items: []
       },
       {
         type: "category",
         collapsible: true,
         label: "Customizations",
-        items: [
-          "messaging-channels/botpress-webchat/customizations/custom-css",
-        ]
+        items: ["messaging-channels/botpress-webchat/customizations/custom-css"]
       }
     ]
   },

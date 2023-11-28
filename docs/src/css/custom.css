@@ -61,7 +61,7 @@ main li > a:hover {
 
 .hero {
   align-items: center;
-  background-color: red;
+  background-color: #000;
   color: #f5f6f8;
   display: flex;
   padding: 4rem 2rem;
