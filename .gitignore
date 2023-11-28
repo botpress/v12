@@ -72,3 +72,5 @@ modules/*/assets/web/*
 modules/*/assets/config.schema.json
 **/out/**
 **/dist/**
+
+.env
