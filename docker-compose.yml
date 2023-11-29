@@ -17,7 +17,9 @@ services:
       - '${CHATO_STUDIO_WEB_PORT}:3000'
     volumes:
       - ./bench:/botpress/bench
+      - ./build:/botpress/build
       - ./config:/botpress/config
+      - ./docs:/botpress/docs
       - ./modules:/botpress/modules
       - ./packages:/botpress/packages
     depends_on:
