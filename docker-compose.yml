@@ -1,0 +1,26 @@
+version: '3'
+services:
+  chato-db:
+    image: 'ankane/pgvector:v0.4.4'
+    container_name: 'chato-db'
+    ports:
+      - '${DOCKER_DATABASE_PORT}:5432'
+    volumes:
+      - ./tmp/pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+  chato-studio:
+    build: .
+    container_name: chato-studio
+    command: bash -c "yarn start"
+    ports:
+      - '${CHATO_STUDIO_WEB_PORT}:3000'
+    volumes:
+      - ./bench:/botpress/bench
+      - ./config:/botpress/config
+      - ./modules:/botpress/modules
+      - ./packages:/botpress/packages
+    depends_on:
+      - 'chato-db'
+    env_file:
+      - .env
