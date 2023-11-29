@@ -94,7 +94,6 @@ export const makeMainRoutes = () => {
             <PrivateRoute path="/" auth={auth} component={App}>
               <Switch>
                 <Route path="/checklist" component={Checklist} />
-                <Route path="/latestReleases" component={LatestReleases} />
                 <Route path="/server/monitoring" component={Monitoring} />
                 <Route path="/server/version" component={Versioning} />
                 <Route path="/server/languages" component={Languages} />

@@ -202,13 +202,6 @@ const Menu: FC<Props> = props => {
             />
           )}
         </AccessControl>
-        <MenuItem
-          text={lang.tr('admin.sideMenu.latestReleases')}
-          id="btn-menu-releases"
-          icon="feed"
-          url="/latestReleases"
-          tag={renderLatestReleaseTag()}
-        />
       </ul>
     </aside>
   )
