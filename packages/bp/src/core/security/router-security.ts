@@ -108,13 +108,6 @@ export const assertBotpressPro = (workspaceService: WorkspaceService) => async (
   _res: Response,
   next: NextFunction
 ) => {
-  if (!process.IS_PRO_ENABLED || !process.IS_LICENSED) {
-    // Allow to create the first user
-    if ((await workspaceService.getUniqueCollaborators()) > 0) {
-      return next(new PaymentRequiredError('Botpress Pro is required to perform this action'))
-    }
-  }
-
   return next()
 }
 
