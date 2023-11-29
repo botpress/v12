@@ -26,7 +26,7 @@ const writeMetadata = async () => {
   }
 
   try {
-    const currentBranch = await Promise.fromCallback(cb => exec('git rev-parse --abbrev-ref HEAD', cb))
+    const currentBranch = 'master'
     metadata.branch = currentBranch.replace('\n', '')
   } catch (err) {
     console.error(`Couldn't get active branch`, err)

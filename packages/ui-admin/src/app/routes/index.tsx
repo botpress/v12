@@ -34,7 +34,7 @@ import PrivateRoute from './PrivateRoute'
 import SegmentHandler from './SegmentHandler'
 
 const setupBranding = () => {
-  window.document.title = window.APP_NAME || 'Botpress Admin Panel'
+  window.document.title = window.APP_NAME || 'ChatO Srudio'
 
   if (window.APP_FAVICON) {
     const link = document.querySelector('link[rel="icon"]')
