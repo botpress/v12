@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM --platform=linux/amd64 ubuntu:20.04
 
 # Set environment variables
 ENV BP_WORKDIR=/botpress
@@ -6,13 +6,15 @@ ENV BP_USER=botpress
 ENV BP_GROUP=botpress
 ENV BP_DATA_PATH $BP_WORKDIR/data
 
-# Install dependencies
-RUN dpkg --add-architecture arm64 && \
-    apt-get update && \
-    apt-get install -y chromium-browser:arm64
+# Set the DEBIAN_FRONTEND environment variable to non-interactive
+ENV DEBIAN_FRONTEND=noninteractive
 
-# Install curl and Node.js
-RUN apt-get update && apt-get install -y curl g++ make ca-certificates curl gnupg
+# Set the timezone to your desired value (e.g., UTC)
+RUN ln -fs /usr/share/zoneinfo/UTC /etc/localtime
+
+# Install dependencies & node.js
+RUN apt-get update && apt-get install -y curl g++ make curl \
+    gnupg chromium-browser git
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
     apt-get install -y nodejs
 
@@ -22,14 +24,11 @@ RUN npm install -g yarn
 # Set working directory
 WORKDIR $BP_WORKDIR
 
-# Copy package.json and yarn.lock files
-COPY package.json yarn.lock ./
+# Copy the rest of the code
+COPY . .
 
 # Install dependencies
 RUN yarn install
-
-# Copy the rest of the code
-COPY . .
 
 # Build the application
 RUN yarn build
