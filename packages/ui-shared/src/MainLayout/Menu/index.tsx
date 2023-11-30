@@ -20,6 +20,9 @@ const Menu: FC<MenuProps> = ({ items, className }) => {
 
   return (
     <aside className={cx(style.sidebar, className, 'bp-sidebar')}>
+      <a href="admin/" className={cx(style.logo, 'bp-logo')}>
+        CS
+      </a>
       {!!items?.length && <ul className={cx('nav')}>{items.map(renderBasicItem)}</ul>}
     </aside>
   )
