@@ -16,6 +16,8 @@ services:
     ports:
       - '${CHATO_STUDIO_WEB_PORT}:3000'
     volumes:
+      - ./package.json:/botpress/package.json
+      - ./package-lock.json:/botpress/package-lock.json
       - ./bench:/botpress/bench
       - ./build:/botpress/build
       - ./config:/botpress/config
