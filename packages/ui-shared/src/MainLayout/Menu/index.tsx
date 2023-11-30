@@ -3,7 +3,6 @@ import cx from 'classnames'
 import _ from 'lodash'
 import React, { FC } from 'react'
 import { NavLink } from 'react-router-dom'
-import logo from './logo-icon.svg'
 
 import style from './style.scss'
 import { MenuItem, MenuProps } from './typings'
@@ -21,9 +20,6 @@ const Menu: FC<MenuProps> = ({ items, className }) => {
 
   return (
     <aside className={cx(style.sidebar, className, 'bp-sidebar')}>
-      <a href="admin/" className={cx(style.logo, 'bp-logo')}>
-        <img width="19" src={logo} alt="ChatO Studio" />
-      </a>
       {!!items?.length && <ul className={cx('nav')}>{items.map(renderBasicItem)}</ul>}
     </aside>
   )
