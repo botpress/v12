@@ -222,7 +222,12 @@ export class ModuleLoader {
       await resourceLoader.enableResources()
       console.log('runMigrations')
       await resourceLoader.runMigrations()
-      console.log('importResourses')
+      console.log(
+        'importResourses om ' +
+          name +
+          ' with matchers: ' +
+          JSON.stringify(resourceLoader.returnLocalMatchers(), null, 2)
+      )
       await resourceLoader.importResources()
     } catch (err) {
       this.logger.attachError(err).error(`Error in module "${name}" onServerStarted`)

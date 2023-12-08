@@ -55,11 +55,13 @@ export class ModuleResourceLoader {
     this.moduleHooksPath = `${this.modulePath}/dist/hooks/`
   }
 
-  async returnLocalMatchers() {
+  returnLocalMatchers() {
     return {
       globalPaths: this.globalPaths,
       hookMatcher: this.hookMatcher,
-      moduleHooksPath: this.moduleHooksPath
+      moduleHooksPath: this.moduleHooksPath,
+      modulePath: this.modulePath,
+      moduleName: this.moduleName
     }
   }
 
@@ -98,6 +100,8 @@ export class ModuleResourceLoader {
       },
       ...(await this._getHooksPaths())
     ]
+
+    console.log({ modulePath: this.modulePath, exportPaths: this.exportPaths })
 
     // Deletes dangling hooks that may have been removed upon module updates.
     // Note: We cannot use the clearDestination property as we do with actions
@@ -150,6 +154,7 @@ export class ModuleResourceLoader {
   }
 
   private async _loadModuleResources(): Promise<void> {
+    console.log('load resources', { exportPaths: this.exportPaths })
     for (const resource of this.exportPaths) {
       if (fse.pathExistsSync(resource.src) && !(await this.isSymbolicLink(resource.dest))) {
         await this._upsertModuleResources(resource)
@@ -167,6 +172,7 @@ export class ModuleResourceLoader {
   }
 
   private async _deleteDanglingHooks() {
+    console.log('delete hooks')
     const hooks = await this.ghost.global().directoryListing('/hooks')
 
     // Only keep hooks from the current module
@@ -228,6 +234,8 @@ export class ModuleResourceLoader {
   }
 
   private async _upsertModuleResources(rootPath: ResourceExportPath): Promise<void> {
+    console.log({ rootPath })
+
     if (rootPath.clearDestination) {
       const fileList = await this.ghost.global().directoryListing(rootPath.dest)
       await Promise.map(fileList, file => this.ghost.global().deleteFile(rootPath.dest, file))
