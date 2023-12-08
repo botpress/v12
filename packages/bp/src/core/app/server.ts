@@ -245,6 +245,10 @@ export class HTTPServer {
 
     if (keepAliveTimeout && Number.isInteger(keepAliveTimeout)) {
       this.httpServer.keepAliveTimeout = keepAliveTimeout
+
+      // https://adamcrowder.net/posts/node-express-api-and-aws-alb-502/
+      // https://github.com/nodejs/node/issues/27363
+      this.httpServer.headersTimeout = keepAliveTimeout + 1000
     }
 
     await this.mediaRouter.initialize()
