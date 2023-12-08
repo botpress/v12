@@ -162,8 +162,8 @@ export class ModuleResourceLoader {
     }
 
     if (process.BPFS_STORAGE === 'database') {
-      await this.ghost.global().syncDatabaseFilesToDisk('actions')
-      await this.ghost.global().syncDatabaseFilesToDisk('hooks')
+      await this.ghost.global().syncDatabaseFilesToDisk('actions', `${this.moduleName}/`)
+      await this.ghost.global().syncDatabaseFilesToDisk('hooks', `/${this.moduleName}/`)
     }
   }
 

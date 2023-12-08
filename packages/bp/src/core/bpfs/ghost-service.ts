@@ -659,13 +659,15 @@ export class ScopedGhostService {
     await this.primaryDriver.moveFile(fromPath, toPath)
   }
 
-  async syncDatabaseFilesToDisk(rootFolder: string): Promise<void> {
+  async syncDatabaseFilesToDisk(rootFolder: string, filter?: string): Promise<void> {
     console.log('syncDatabaseFilesToDisk')
     if (!this.useDbDriver) {
       return
     }
 
-    const remoteFiles = await this.dbDriver.directoryListing(this._normalizeFolderName(rootFolder))
+    const remoteFiles = (await this.dbDriver.directoryListing(this._normalizeFolderName(rootFolder))).filter(filePath =>
+      filter?.length ? filePath.includes(filter) : true
+    )
     console.log('syncDatabaseFilesToDisk remoteFiles ', { remoteFiles })
     const filePath = filename => this._normalizeFileName(rootFolder, filename)
 
