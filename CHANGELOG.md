@@ -1,3 +1,12 @@
+## [12.31.3](https://github.com/botpress/v12/compare/v12.31.2...v12.31.3) (2023-12-11)
+
+
+### Features
+
+* **core:** add keepAliveTimeout ([#1787](https://github.com/botpress/v12/issues/1787)) ([adf71bd](https://github.com/botpress/v12/commit/adf71bd7d599dc2f481b8ffcacc3ceaf8886dc01))
+
+
+
 ## [12.31.2](https://github.com/botpress/v12/compare/v12.31.1...v12.31.2) (2023-11-03)
 
 
