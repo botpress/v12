@@ -142,7 +142,7 @@ services:
     environment:
       - DATABASE_URL=postgres://postgres:secretpw@postgres:5435/botpress_db
       - REDIS_URL=redis://redis:6379?password=redisPassword
-      - BP_MODULE_NLU_DUCKLINGURL=http://botpress_lang:8000
+      - BP_MODULE_NLU_DUCKLINGURL=http://botpress_duckling:8000
       - BP_MODULE_NLU_LANGUAGESOURCES=[{"endpoint":"http://botpress_lang:3100"}]
       - CLUSTER_ENABLED=true
       - BP_PRODUCTION=true
