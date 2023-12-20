@@ -120,7 +120,10 @@ export default class WebchatDb {
         }
       }
     } catch (err) {
-      this.bp.logger.forBot(botId).error('An error occurred while creating a user mapping.', err)
+      this.bp.logger
+        .forBot(botId)
+        .attachError(err)
+        .error('An error occurred while creating a user mapping.')
     }
 
     return mapping
