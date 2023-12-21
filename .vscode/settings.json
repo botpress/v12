@@ -6,7 +6,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "eslint.nodePath": "./node_modules",
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll": "explicit"
   },
   "search.exclude": {
     "**versioned**": true,
