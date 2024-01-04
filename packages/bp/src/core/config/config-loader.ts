@@ -262,12 +262,12 @@ export class ConfigProvider {
         customCss: ''
       },
       studio: {
-        title: 'Botpress Studio',
+        title: 'ChatO Studio',
         favicon: 'assets/studio/ui/public/img/favicon.png',
         customCss: ''
       },
       webchat: {
-        title: 'Botpress Webchat',
+        title: 'ChatO Webchat',
         favicon: 'assets/studio/ui/public/img/favicon.png',
         customCss: ''
       }
