@@ -71,7 +71,7 @@ body {
 
 .bpw-widget-btn:focus,
 .bpw-widget-btn:hover {
-  background-color: #06f;
+  background-color: transparent;
 }
 
 .bpw-chat-container {
