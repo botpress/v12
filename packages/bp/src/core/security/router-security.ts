@@ -98,7 +98,7 @@ export const assertSuperAdmin = (req: Request, res: Response, next: Function) =>
 
 export const assertWorkspace = async (req: RequestWithUser, _res: Response, next: NextFunction) => {
   if (!req.workspace) {
-    return next(new InvalidOperationError('Workspace is missing. Set header X-BP-Workspace'))
+    return next(new InvalidOperationError('Tenant is missing. Set header X-BP-Workspace'))
   }
   next()
 }

@@ -62,7 +62,7 @@ const Workspaces: FC<Props> = props => {
   }
 
   return (
-    <PageContainer title="Manage Workspaces">
+    <PageContainer title="Manage Tenants">
       <SplitPage sideMenu={<CreateWorkspaceModal refreshWorkspaces={refreshWorkspaces} />}>
         <div className={style.table}>
           {props.workspaces.map(workspace => (
@@ -71,12 +71,7 @@ const Workspaces: FC<Props> = props => {
                 <Popover minimal position={Position.BOTTOM} interactionKind={PopoverInteractionKind.HOVER}>
                   <Button id="btn-menu-workspaces" icon={<Icon icon="menu" />} minimal={true} />
                   <Menu>
-                    <MenuItem
-                      id="btn-edit"
-                      icon="edit"
-                      text="Edit Workspace"
-                      onClick={() => editWorkspace(workspace)}
-                    />
+                    <MenuItem id="btn-edit" icon="edit" text="Edit Tenant" onClick={() => editWorkspace(workspace)} />
                     <MenuItem
                       id="btn-rollout-configure"
                       icon="send-to-graph"
@@ -93,7 +88,7 @@ const Workspaces: FC<Props> = props => {
                     <MenuItem
                       id="btn-delete-workspace"
                       icon="trash"
-                      text="Delete Workspace"
+                      text="Delete Tenant"
                       onClick={() => deleteWorkspace(workspace)}
                     />
                   </Menu>

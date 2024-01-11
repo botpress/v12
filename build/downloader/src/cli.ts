@@ -106,7 +106,7 @@ export const listFiles = async ({ platform, appData, output }: CommonArgs) => {
       const isUsed = activeVersion && release.version.endsWith(activeVersion)
 
       logger.info(
-        `  ${release.version} ${isInstalled ? '[installed]' : ''} ${isUsed ? '[currently used in this workspace]' : ''}`
+        `  ${release.version} ${isInstalled ? '[installed]' : ''} ${isUsed ? '[currently used in this tenant]' : ''}`
       )
     }
   }
@@ -114,7 +114,7 @@ export const listFiles = async ({ platform, appData, output }: CommonArgs) => {
   logger.info('')
   logger.info('Type `yarn bpd init` to download & use binaries configured in package.json')
   logger.info('Type `yarn bpd install <toolName>` to install the latest version')
-  logger.info('Type `yarn bpd use <toolName> <version>` to copy that specific version in the current workspace')
+  logger.info('Type `yarn bpd use <toolName> <version>` to copy that specific version in the current tenant')
   logger.info('Type `yarn bpd clean` to remove all binaries')
 }
 

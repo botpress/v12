@@ -61,9 +61,9 @@ const migration: sdk.ModuleMigration = {
 
     if (!_.isEqual(originalWorkspaces, alteredWorkspaces)) {
       await service.save(alteredWorkspaces)
-      return { success: true, message: 'Workspaces agent and editor roles have been changed' }
+      return { success: true, message: 'tenant agent and editor roles have been changed' }
     } else {
-      return { success: true, message: 'No Workspaces to migrate' }
+      return { success: true, message: 'No tenant to migrate' }
     }
   }
 }
