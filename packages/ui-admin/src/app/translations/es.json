@@ -122,7 +122,7 @@
         "info": "Información",
         "warning": "Advertencia"
       },
-      "onlyBotsFromThisWorkspace": "Solo bots de este espacio de trabajo",
+      "onlyBotsFromThisWorkspace": "Solo bots de este cliente",
       "rangeLabel": "{start} a {end} - {timespan}",
       "refreshed": "Registros actualizados",
       "rowLimitReached": "Se alcanzó el límite de filas. Elija un rango de tiempo diferente",
@@ -216,7 +216,7 @@
       "roles": "Roles",
       "serverLicense": "Licencia de servidor",
       "sourceControl": "Control de versiones",
-      "workspace": "Espacio de trabajo"
+      "workspace": "Cliente"
     },
     "signIn": "Registrarse",
     "signInWithLabel": "Iniciar sesión con {label}",
@@ -258,7 +258,7 @@
     },
     "workspace": {
       "bots": {
-        "alwaysAssignedToWorkspace": "En Botpress, los bots siempre se asignan a un espacio de trabajo.",
+        "alwaysAssignedToWorkspace": "En Botpress, los bots siempre se asignan a un cliente.",
         "approvedPromotion": "Promoción del bot a la siguiente etapa aprobada",
         "bots": "Bots",
         "confirmDelete": "¿Estás seguro de que deseas eliminar este bot? Esto no se puede deshacer.",
@@ -325,7 +325,7 @@
         "needYourApproval": "Necesita tu aprobación",
         "new": "Nuevo bot",
         "noBotMatches": "Ningún bot coincide con su consulta",
-        "noBotYet": "Este espacio de trabajo aún no tiene bots",
+        "noBotYet": "Este cliente aún no tiene bots",
         "noSpecifiedLanguage": "Tienes bots sin un idioma específico. El idioma predeterminado es obligatorio desde Botpress 11.8. Establezca el idioma del bot en la página de configuración del bot.",
         "promoted": "Bot promovido a la siguiente etapa",
         "remounted": "Bot remontado con éxito",
@@ -343,7 +343,7 @@
       "roles": {
         "default": {
           "administrator": {
-            "description": "Los administradores tienen acceso completo al espacio de trabajo, lo que incluye agregar miembros, crear bots y sincronizar cambios.",
+            "description": "Los administradores tienen acceso completo al cliente, lo que incluye agregar miembros, crear bots y sincronizar cambios.",
             "name": "Administrador"
           },
           "contentEditor": {
@@ -365,13 +365,13 @@
       "users": {
         "addChatUser": "Agregar usuario de chat",
         "chatUsers": "Usuarios de chat",
-        "chatUsersHelp": "Los usuarios del chat solo pueden hablar con bots. Pueden ver una lista de todos los bots en el espacio de trabajo.",
+        "chatUsersHelp": "Los usuarios del chat solo pueden hablar con bots. Pueden ver una lista de todos los bots en los recursos del cliente.",
         "collaborators": {
           "accountCreated": "Cuenta creada",
           "accountReady": "¡Tu cuenta de botpress está lista!",
           "action": "Acción",
           "add": "Agregar colaborador",
-          "addToWorkspace": "Agregar al espacio de trabajo",
+          "addToWorkspace": "Agregar al cliente",
           "authStrategy": "Estrategia de autenticación",
           "changeRole": "Cambiar rol",
           "chooseRole": "Elige un rol para ese usuario",
@@ -388,17 +388,17 @@
           "help": "Cree, elimine usuarios o actualice su rol.",
           "inviteExistingUser": "Invite a un usuario existente o escriba su dirección de correo electrónico y presione Entrar",
           "lastLogin": "Último acceso",
-          "noCollaboratorsYet": "Este espacio de trabajo aún no tiene colaboradores",
+          "noCollaboratorsYet": "Este cliente aún no tiene colaboradores",
           "noMatch": "Ningún usuario coincide con su consulta",
           "passwordBeenReset": "Tu contraseña ha sido restablecida.",
           "passwordReset": "Restablecer contraseña",
           "passwordResetConfirm": "¿Estás seguro de que desea restablecer la contraseña de {user}?",
           "passwordResetFail": "No se pudo restablecer la contraseña: {msg}",
           "passwordResetSuccess": "Se restableció la contraseña con exito",
-          "removeConfirm": "¿Estás seguro de que quieres eliminar {user} de este espacio de trabajo?",
-          "removeFail": "No se pudo eliminar el usuario del espacio de trabajo: {msg}",
-          "removeFromWorkspace": "Eliminar del espacio de trabajo",
-          "removeSucess": "El usuario {user} se eliminó correctamente del espacio de trabajo",
+          "removeConfirm": "¿Estás seguro de que quieres eliminar {user} de este cliente?",
+          "removeFail": "No se pudo eliminar el usuario del cliente: {msg}",
+          "removeFromWorkspace": "Eliminar del cliente",
+          "removeSucess": "El usuario {user} se eliminó correctamente del cliente",
           "resetPassword": "Restablecer la contraseña",
           "roleUpdateFail": "No se pudo actualizar la función: {msg}",
           "roleUpdateSuccess": "Rol actualizado correctamente",
@@ -413,7 +413,7 @@
         "usageLeft": "Uso restante {allowedUsages}"
       }
     },
-    "workspaceName": "Espacio de trabajo: {name}"
+    "workspaceName": "Cliente: {name}"
   },
   "langCodes": {
     "fr": "Francés",

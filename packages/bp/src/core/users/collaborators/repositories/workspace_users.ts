@@ -21,7 +21,7 @@ export class WorkspaceUsersRepository {
 
   async updateUserRole(email: string, strategy: string, workspace: string, role: string): Promise<void> {
     if (!email || !strategy || !workspace) {
-      throw new Error('Email, Strategy and Workspace are mandatory')
+      throw new Error('Email, Strategy and Tenant are mandatory')
     }
 
     await this.database
