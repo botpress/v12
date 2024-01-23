@@ -69,7 +69,7 @@ export class WorkspaceManager {
 
   initializeWorkspace = async ({ usePro }: { usePro: boolean }) => {
     if (await this.rootPathExists()) {
-      console.error('Cannot initialize a new workspace in an existing path')
+      console.error('Cannot initialize a new tenant in an existing path')
       process.exit(0)
     }
 
@@ -88,7 +88,7 @@ export class WorkspaceManager {
    */
   async syncWorkspace({ forceCheckout, devMode }: { forceCheckout: boolean; devMode: boolean }) {
     if (!(await this.rootPathExists())) {
-      console.error('To sync a workspace, the path must exist')
+      console.error('To sync a tenant, the path must exist')
       process.exit(0)
     }
 

@@ -31,7 +31,7 @@ const CreateWorkspaceModal: FC<Props> = props => {
       await api.getSecured().post('/admin/workspace/workspaces', workspace)
       props.refreshWorkspaces()
 
-      toast.success('Workspace created successfully')
+      toast.success('Tenant created successfully')
       closeModal()
     } catch (err) {
       toast.failure(err.message)
@@ -61,14 +61,14 @@ const CreateWorkspaceModal: FC<Props> = props => {
 
   return (
     <div>
-      <Dialog isOpen={isOpen} icon="add" onClose={closeModal} transitionDuration={0} title={'Create workspace'}>
+      <Dialog isOpen={isOpen} icon="add" onClose={closeModal} transitionDuration={0} title={'Create Tenant'}>
         <div className={Classes.DIALOG_BODY}>
           {step === 1 && (
             <Fragment>
-              <FormGroup label={<span>Workspace Name</span>} labelFor="input-workspaceName" labelInfo="*">
+              <FormGroup label={<span>Tenant Name</span>} labelFor="input-workspaceName" labelInfo="*">
                 <InputGroup
                   id="input-workspaceName"
-                  placeholder="The name of your workspace"
+                  placeholder="The name of your tenant"
                   value={name}
                   onChange={updateName}
                   tabIndex={1}
@@ -77,14 +77,14 @@ const CreateWorkspaceModal: FC<Props> = props => {
               </FormGroup>
 
               <FormGroup
-                label={<span>Workspace ID</span>}
+                label={<span>Tenant ID</span>}
                 labelFor="input-workspaceId"
                 labelInfo="*"
                 helperText="This ID cannot be changed afterwards."
               >
                 <InputGroup
                   id="input-workspaceId"
-                  placeholder="The ID of your workspace"
+                  placeholder="The ID of your tenant"
                   value={id}
                   onChange={updateId}
                   tabIndex={2}
@@ -95,7 +95,7 @@ const CreateWorkspaceModal: FC<Props> = props => {
                 label={<span>Bot Prefix</span>}
                 labelFor="input-botPrefix"
                 labelInfo="*"
-                helperText="Bots in this workspace must start with this prefix, followed by __"
+                helperText="Bots in this tenant must start with this prefix, followed by __"
               >
                 <InputGroup
                   id="input-botPrefix"
@@ -109,7 +109,7 @@ const CreateWorkspaceModal: FC<Props> = props => {
               <FormGroup label={<span>Description</span>} labelFor="input-description">
                 <TextArea
                   id="input-description"
-                  placeholder="What is this workspace being used for? (optional)"
+                  placeholder="What is this tenant being used for? (optional)"
                   value={description}
                   onChange={e => setDescription(e.currentTarget.value)}
                   fill={true}
@@ -124,7 +124,7 @@ const CreateWorkspaceModal: FC<Props> = props => {
           {step === 2 && (
             <Fragment>
               <RadioGroup
-                label="Who will interact with bots of this workspace? "
+                label="Who will interact with bots of this tenant? "
                 onChange={e => setAudience(e.currentTarget.value)}
                 selectedValue={audience}
               >
@@ -137,7 +137,7 @@ const CreateWorkspaceModal: FC<Props> = props => {
           {step === 3 && (
             <Fragment>
               <RadioGroup
-                label="Which pipeline would you like to use for this workspace?"
+                label="Which pipeline would you like to use for this tenant?"
                 onChange={e => setPipelineId(e.currentTarget.value)}
                 selectedValue={pipelineId}
               >
@@ -157,7 +157,7 @@ const CreateWorkspaceModal: FC<Props> = props => {
         </div>
       </Dialog>
 
-      <Button id="btn-create" text="Create workspace" icon="add" onClick={() => setOpen(true)} />
+      <Button id="btn-create" text="Create tenant" icon="add" onClick={() => setOpen(true)} />
     </div>
   )
 }

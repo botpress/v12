@@ -273,26 +273,6 @@ export class Botpress {
       )
     }
 
-    if (!process.IS_PRO_ENABLED) {
-      const workspaces = await this.workspaceService.getWorkspaces()
-      if (workspaces.length > 1) {
-        this._killServer(
-          'You have more than one workspace. To create unlimited workspaces, please upgrade to Botpress Pro.'
-        )
-      }
-
-      if (workspaces.length) {
-        for (const workspace of workspaces) {
-          const pipeline = await this.workspaceService.getPipeline(workspace.id)
-          if (pipeline && pipeline.length > 1) {
-            this._killServer(
-              'Your pipeline has more than a single stage. To enable the pipeline feature, please upgrade to Botpress Pro.'
-            )
-          }
-        }
-      }
-    }
-
     const bots = await this.botService.getBots()
     bots.forEach(bot => {
       if (!process.IS_PRO_ENABLED && bot.languages && bot.languages.length > 1) {

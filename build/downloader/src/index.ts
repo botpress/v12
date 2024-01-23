@@ -102,7 +102,7 @@ yargs
     return yargs
       .options({
         workspace: {
-          description: 'Set the location where the workspace is located',
+          description: 'Set the location where the tenant is located',
           alias: ['w', 'path'],
           type: 'string',
           required: true,
@@ -129,10 +129,10 @@ yargs
       })
       .command(
         ['init', '$0e'],
-        'Setup a new workspace',
+        'Setup a new tenant',
         {
           pro: {
-            description: 'Includes Botpress Pro in the workspace',
+            description: 'Includes Botpress Pro in the tenant',
             type: 'boolean',
             default: false
           }

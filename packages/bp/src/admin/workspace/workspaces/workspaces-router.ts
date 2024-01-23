@@ -26,10 +26,6 @@ class WorkspacesRouter extends CustomAdminRouter {
     router.post(
       '/',
       this.asyncMiddleware(async (req, res) => {
-        if (!process.IS_PRO_ENABLED) {
-          throw new InvalidOperationError('Botpress Pro must be enabled')
-        }
-
         const { value, error } = Joi.validate(req.body, WorkspaceCreationSchema)
         if (error) {
           throw new InvalidOperationError(`An error occurred while creating the workspace: ${error.message}`)
