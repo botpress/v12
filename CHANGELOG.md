@@ -1,3 +1,7 @@
+## [12.31.4](https://github.com/botpress/v12/compare/v12.31.3...v12.31.4) (2024-01-25)
+
+
+
 ## [12.31.3](https://github.com/botpress/v12/compare/v12.31.2...v12.31.3) (2023-12-13)
 
 
