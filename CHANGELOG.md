@@ -1,3 +1,12 @@
+## [12.31.4](https://github.com/botpress/v12/compare/v12.31.3...v12.31.4) (2024-01-29)
+
+
+### Bug Fixes
+
+* **channel-web:** add details to user mapping error ([#1803](https://github.com/botpress/v12/issues/1803)) ([fef1b4e](https://github.com/botpress/v12/commit/fef1b4e452e0c48dd82b19004dd6b3da5f876ace))
+
+
+
 ## [12.31.3](https://github.com/botpress/v12/compare/v12.31.2...v12.31.3) (2023-12-13)
 
 
