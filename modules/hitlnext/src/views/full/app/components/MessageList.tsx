@@ -14,7 +14,7 @@ interface Props {
 const MessageList: FC<Props> = props => {
   return (
     <div className={cx(style.messageList)}>
-      {sortby(props.events, 'id').map(ev => (
+      {sortby(props.events, ['createdOn', 'id']).map(ev => (
         <Message key={ev.id} {...ev} />
       ))}
     </div>
