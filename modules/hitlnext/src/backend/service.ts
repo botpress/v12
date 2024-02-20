@@ -111,7 +111,7 @@ class Service {
       ..._.pick(event, ['botId', 'channel', 'target', 'threadId']),
       direction: 'incoming',
       payload: { exitType, agentName },
-      preview: 'none',
+      preview: 'Internal HITL Event: ' + exitType,
       type: 'hitlnext'
     })
 
