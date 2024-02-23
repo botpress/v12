@@ -43,6 +43,7 @@ export default class WebchatDb {
       // Prevents issues when switching between different Messaging servers
       // TODO: Remove this check once the 'web_user_map' table is removed
       if (!(await this.checkUserExist(botId, userMapping.userId))) {
+        this.bp.logger.info(`No user found for visitor ${visitorId} in the current mapping, reseting mapping`)
         await this.deleteMappingFromVisitor(botId, visitorId)
         await createUserAndMapping()
       }
@@ -105,11 +106,31 @@ export default class WebchatDb {
     }
   }
 
+  async waitForLock(lockName: string, durationMs: number, run: number = 0): Promise<sdk.RedisLock> {
+    const lock = this.bp.distributed.acquireLock(lockName, durationMs)
+
+    if (!lock) {
+      if (run > durationMs / 100) {
+        throw new Error(`Timeout acquiring lock '${lockName}'`)
+      }
+
+      await new Promise(resolve => setTimeout(resolve, 100))
+      return this.waitForLock(lockName, durationMs, run + 1)
+    }
+
+    return lock
+  }
+
   async createUserMapping(botId: string, visitorId: string, userId: string): Promise<UserMapping> {
     let mapping: UserMapping | undefined = { botId, visitorId, userId }
-
+    let lock: sdk.RedisLock
     try {
       try {
+        // Lock prevent issues when multiple endpoints are trying
+        // to map the user at the same time
+        const lockName = `create_user_mapping_${botId}_${visitorId}`
+        lock = await this.waitForLock(lockName, ms('5s'))
+
         await this.knex('web_user_map').insert(mapping)
         this.cacheByVisitor.set(`${botId}_${visitorId}`, mapping)
       } catch (err) {
@@ -124,6 +145,10 @@ export default class WebchatDb {
         .forBot(botId)
         .attachError(err)
         .error(`An error occurred while creating a user mapping for user ${userId} and visitor ${visitorId}.`)
+    } finally {
+      if (lock) {
+        lock.unlock()
+      }
     }
 
     return mapping
