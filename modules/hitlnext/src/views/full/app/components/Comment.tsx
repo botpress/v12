@@ -20,7 +20,7 @@ const Comment: FC<IComment> = props => {
     if (state.currentAgent?.agentId === props.agentId) {
       return lang.tr('module.hitlnext.handoff.you')
     } else {
-      return agentName(agent)
+      return (agent && agentName(agent)) || props.agentId
     }
   }
 

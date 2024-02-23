@@ -52,7 +52,7 @@ const HandoffItem: FC<IHandoff> = ({ createdAt, id, status, agentId, userConvers
       return lang.tr('module.hitlnext.handoff.you')
     } else if (agentId) {
       const agent = state.agents[agentId]
-      return agentName(agent)
+      return (agent && agentName(agent)) || agentId
     }
   }
   const getHandoffStyle = (createdAt, status) => {
