@@ -1,0 +1,15 @@
+.bpw-floating-button {
+  background-image: url('https://cdn-chato.s3.us-west-2.amazonaws.com/logos/koonol-icon.svg');
+}
+
+.bpw-floating-button i {
+  display: none;
+}
+
+.bpw-header-container {
+  background-color: #0064C5;
+}
+
+.bpw-from-user .bpw-chat-bubble .bpw-chat-bubble-content {
+  background-color: #0064C5;
+}
