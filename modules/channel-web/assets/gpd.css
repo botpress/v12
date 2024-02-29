@@ -5,3 +5,11 @@
 .bpw-floating-button i {
   display: none;
 }
+
+.bpw-header-container {
+  background-color: #0074F9;
+}
+
+.bpw-from-user .bpw-chat-bubble .bpw-chat-bubble-content {
+  background-color: #0074F9;
+}
