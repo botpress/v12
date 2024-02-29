@@ -109,6 +109,7 @@ window.botpressWebChat = {
   mergeConfig: mergeConfig,
   sendPayload: sendPayload
 }
+window.chatoWebChat = window.botpressWebChat;
 
 window.addEventListener('message', function(payload) {
   const data = payload.data
