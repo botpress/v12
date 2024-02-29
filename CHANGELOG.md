@@ -1,3 +1,12 @@
+## [12.31.5](https://github.com/botpress/v12/compare/v12.31.4...v12.31.5) (2024-02-29)
+
+
+### Bug Fixes
+
+* **hitlnext:** issues if agent user is deleted ([#1815](https://github.com/botpress/v12/issues/1815)) ([5d80937](https://github.com/botpress/v12/commit/5d809376952b682b0b70570a32e8c38b30ce94cc))
+
+
+
 ## [12.31.4](https://github.com/botpress/v12/compare/v12.31.3...v12.31.4) (2024-01-29)
 
 
