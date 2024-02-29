@@ -1,0 +1,7 @@
+.bpw-floating-button {
+  background-image: url('https://cdn-chato.s3.us-west-2.amazonaws.com/logos/gpd-icon.svg');
+}
+
+.bpw-floating-button i {
+  display: none;
+}
