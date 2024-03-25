@@ -1,7 +1,7 @@
 .bpw-floating-button {
   background-image: url('https://cdn-chato.s3.us-west-2.amazonaws.com/logos/chato-icon.svg');
   box-shadow: 0 0 0 0 #913bff;
-  /* animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1); */
+  animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
   border-radius: 50%;
 }
 

@@ -853,7 +853,12 @@ body {
   height: 52px;
   cursor: pointer;
   border-radius: 0px;
-  overflow: hidden;
+  overflow: visible;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
 
   padding: 0;
   border: none;

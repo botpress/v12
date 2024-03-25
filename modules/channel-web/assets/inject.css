@@ -18,10 +18,10 @@
 .bp-widget-widget {
   top: auto;
   left: auto;
-  bottom: 24px;
-  right: 36px;
-  width: 76px !important;
-  height: 76px !important;
+  bottom: 0px;
+  right: 0px;
+  width: 150px !important;
+  height: 150px !important;
 }
 
 .bp-widget-hidden {
