@@ -1,7 +1,16 @@
 .bpw-floating-button {
   background-image: url('https://cdn-chato.s3.us-west-2.amazonaws.com/logos/uttopia-icon.svg');
+  box-shadow: 0 0 0 0 #913bff;
+  animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  border-radius: 50%;
 }
 
 .bpw-floating-button i {
   display: none;
+}
+
+@keyframes pulse {
+  to {
+      box-shadow: 0 0 0 45px rgba(232, 76, 61, 0.01);
+  }
 }

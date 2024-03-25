@@ -1,7 +1,19 @@
+.bpw-floating-button {
+  box-shadow: 0 0 0 0 #3ba335;
+  animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
+  border-radius: 50%;
+}
+
 .bpw-header-container {
   background-color: #3ba335;
 }
 
 .bpw-from-user .bpw-chat-bubble .bpw-chat-bubble-content {
   background-color: #3ba335;
+}
+
+@keyframes pulse {
+  to {
+      box-shadow: 0 0 0 45px rgba(232, 76, 61, 0.01);
+  }
 }
