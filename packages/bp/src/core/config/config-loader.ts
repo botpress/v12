@@ -257,17 +257,17 @@ export class ConfigProvider {
   public async getBrandingConfig(appName: 'admin' | 'studio' | 'webchat') {
     const defaultConfig = {
       admin: {
-        title: 'ChatO Studio',
+        title: 'TheGurúCompany Studio',
         favicon: 'assets/admin/ui/public/favicon.ico',
         customCss: ''
       },
       studio: {
-        title: 'ChatO Studio',
+        title: 'TheGurúCompany Studio',
         favicon: 'assets/studio/ui/public/img/favicon.png',
         customCss: ''
       },
       webchat: {
-        title: 'ChatO Webchat',
+        title: 'TheGurúCompany Webchat',
         favicon: 'assets/studio/ui/public/img/favicon.png',
         customCss: ''
       }

@@ -1,6 +1,8 @@
 import { Button, FormGroup, InputGroup, Intent } from '@blueprintjs/core'
 import { lang } from 'botpress/shared'
 import React, { FC, useState } from 'react'
+import cx from 'classnames'
+import style from './style.scss'
 
 interface Props {
   onLogin: (email, password) => void
@@ -17,7 +19,7 @@ export const LoginForm: FC<Props> = props => {
 
   return (
     <form onSubmit={onSubmit}>
-      <FormGroup label={lang.tr('email')}>
+      <FormGroup className={cx('label_input', style.label_input)} label={lang.tr('email')}>
         <InputGroup
           tabIndex={1}
           value={email}
@@ -28,7 +30,7 @@ export const LoginForm: FC<Props> = props => {
         />
       </FormGroup>
 
-      <FormGroup label={lang.tr('admin.password')}>
+      <FormGroup className={cx('label_input', style.label_input)} label={lang.tr('admin.password')}>
         <InputGroup
           tabIndex={2}
           value={password}

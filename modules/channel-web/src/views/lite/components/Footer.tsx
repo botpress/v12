@@ -25,7 +25,7 @@ const Footer = () => {
               ),
               link: (
                 <a href={'https://getchato.ai/'} target="_blank">
-                  {'ChatO'}
+                  {'TheGurúCompany'}
                 </a>
               )
             }}

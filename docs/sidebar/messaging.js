@@ -11,7 +11,7 @@ module.exports = [
   {
     type: "category",
     collapsible: false,
-    label: "Chato Webchat",
+    label: "TheGurúCompany Webchat",
     items: [
       {
         type: "category",

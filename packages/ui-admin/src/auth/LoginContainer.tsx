@@ -19,14 +19,14 @@ const LoginContainer: FC<Props> = props => {
     <div className={cx('centered-container', style.centered_container)}>
       <div className={cx('middle', style.middle)}>
         <div className={cx('inner', style.inner)}>
-          <img className={cx('logo', style.logo)} src={logo} alt="loading" />
           <div className={cx('card', 'card_body', style.card, style.card_body)}>
+            <img className={cx('logo', style.logo)} src={logo} alt="loading" />
             <div className={cx('card_body', 'login_box', style.card_body, style.login_box)}>
-              <div>
+              <div className={cx('form_wrapper', style.form_wrapper)}>
                 <div className={cx('card_title', style.card_title)}>
                   <strong>{props.title || 'Botpress'}</strong>
+                  <p className={cx('login_subtitle', style.login_subtitle)}>{lang.tr('loginMsg')}</p>
                 </div>
-
                 <div className={cx('card_text', style.card_text)}>{props.subtitle || ''}</div>
 
                 {props.error && <Callout intent={Intent.DANGER}>{props.error}</Callout>}
@@ -37,7 +37,7 @@ const LoginContainer: FC<Props> = props => {
           {props.poweredBy && (
             <div className={cx('homepage', style.homepage)}>
               <p>
-                {lang.tr('admin.poweredBy')} <a href="https://getchato.ai/">ChatO</a>
+                {lang.tr('admin.poweredBy')} <a href="https://getchato.ai/">TheGurúCompany</a>
               </p>
             </div>
           )}

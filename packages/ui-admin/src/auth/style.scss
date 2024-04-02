@@ -3,7 +3,7 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  background-color: black;
+  background-color: #1a2232;
 
   .middle {
     display: table-cell;
@@ -11,17 +11,18 @@
   }
 
   .inner {
-    margin-left: auto;
-    margin-right: auto;
-    width: 350px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-
   .logo {
     display: block;
-    width: 90%;
+    width: 320px;
     margin: auto;
-    margin-bottom: 40px;
+    @media (max-width: 960px) {
+      width: 200px;
+    }
   }
 
   .login_btn {
@@ -53,25 +54,31 @@
 .card {
   position: relative;
   display: -webkit-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
+  background-color: #202a40;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  border: 1px solid rgba(109, 109, 109, 0.463);
   border-radius: 0.25rem;
+  justify-content: center;
+  align-items: center;
+  width: 960px;
+  @media (max-width: 960px) {
+    grid-template-columns: 1fr;
+    width: 95%;
+  }
 }
 
 .card_body {
   -webkit-flex: 1 1 auto;
   flex: 1 1 auto;
-  padding: 1.25rem;
+  padding: 2rem 1.25rem;
 }
 
 .card_title {
-  margin-bottom: 0.75rem;
+  color: #eee;
+  text-align: start;
 }
 
 .card_text {
@@ -160,5 +167,21 @@ $excellent: green;
     :global(.bp3-progress-meter) {
       background-color: $excellent;
     }
+  }
+}
+
+.login_subtitle {
+  color: #eee;
+}
+
+.label_input {
+  color: #eee;
+}
+
+.form_wrapper {
+  width: 80%;
+  margin: 0 auto;
+  @media (max-width: 960px) {
+    width: 95%;
   }
 }

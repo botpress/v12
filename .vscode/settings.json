@@ -72,5 +72,6 @@
       "name": "BP Core DB"
     }
   ],
-  "sqltools.useNodeRuntime": true
+  "sqltools.useNodeRuntime": true,
+  "DevChat.PythonForCommands": "/home/guru/.chat/mamba/envs/devchat-commands/bin/python"
 }
