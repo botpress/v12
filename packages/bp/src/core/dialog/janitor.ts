@@ -3,6 +3,7 @@ import { TYPES } from 'core/app/types'
 import { BotService } from 'core/bots'
 import { BotpressConfig, ConfigProvider } from 'core/config'
 import { SessionRepository, createExpiry, SessionIdFactory, DialogSession } from 'core/dialog/sessions'
+import { StateManager } from 'core/dialog/state-manager'
 import { JobService } from 'core/distributed'
 import { Event, EventRepository } from 'core/events'
 import { EventCollector } from 'core/events/event-collector'
@@ -38,7 +39,8 @@ export class DialogJanitor extends Janitor {
     @inject(TYPES.UserRepository) private userRepo: ChannelUserRepository,
     @inject(TYPES.JobService) private jobService: JobService,
     @inject(TYPES.EventCollector) private eventCollector: EventCollector,
-    @inject(TYPES.EventRepository) private eventRepository: EventRepository
+    @inject(TYPES.EventRepository) private eventRepository: EventRepository,
+    @inject(TYPES.StateManager) private stateManager: StateManager
   ) {
     super(logger)
   }
@@ -113,16 +115,14 @@ export class DialogJanitor extends Janitor {
       // Store the timeout event so we can detect loops
       this.eventCollector.storeEvent(InternalEvent)
 
-      const { result: user } = await this.userRepo.getOrCreate(channel, target, botId)
+      // Restore the state for the timeout event
+      await this.stateManager.restore(InternalEvent)
 
       // We clean the queue because that processTimeout will return the same event context
       // if there is no jump, so we don't want the timeout event to process the previous queue
       // The reason to return the event is to persist any changes made to session state or context
       // in the session timeout hook
       InternalEvent.state.context = { ...session.context, queue: undefined } as IO.DialogContext
-      InternalEvent.state.session = session.session_data as IO.CurrentSession
-      InternalEvent.state.user = user.attributes
-      InternalEvent.state.temp = session.temp_data
 
       update.event = await this.dialogEngine.processTimeout(botId, sessionId, InternalEvent)
 
