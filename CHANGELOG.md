@@ -1,3 +1,12 @@
+## [12.31.7](https://github.com/botpress/v12/compare/v12.31.6...v12.31.7) (2024-04-29)
+
+
+### Bug Fixes
+
+* **core:** bot state not restoring ([#1824](https://github.com/botpress/v12/issues/1824)) ([241b436](https://github.com/botpress/v12/commit/241b43615164a6f35f05b41a2e958560a4eb472e))
+
+
+
 ## [12.31.6](https://github.com/botpress/v12/compare/v12.31.5...v12.31.6) (2024-04-12)
 
 
