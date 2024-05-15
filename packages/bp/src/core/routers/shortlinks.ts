@@ -19,7 +19,8 @@ export class ShortLinksRouter extends CustomRouter {
       let link = name && this.shortlinks.get(name)
 
       if (!link) {
-        return res.status(404).send(`Shortlink "${name}" not registered`)
+        // Sanatize name
+        return res.status(404).send(`Shortlink "${name.replace(/</g, '&lt;').replace(/>/g, '&gt;')}" not registered`)
       }
 
       const query = qs.stringify(req.query)
