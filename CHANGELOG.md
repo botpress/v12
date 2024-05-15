@@ -1,3 +1,12 @@
+## [12.31.8](https://github.com/botpress/v12/compare/v12.31.7...v12.31.8) (2024-05-15)
+
+
+### Bug Fixes
+
+* **core:** shortlink exploit ([#1829](https://github.com/botpress/v12/issues/1829)) ([8a99f6c](https://github.com/botpress/v12/commit/8a99f6c0acb0b5a97c0cc5f31e5c5672be890f3a))
+
+
+
 ## [12.31.7](https://github.com/botpress/v12/compare/v12.31.6...v12.31.7) (2024-04-29)
 
 
