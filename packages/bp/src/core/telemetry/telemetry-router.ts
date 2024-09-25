@@ -34,7 +34,7 @@ export class TelemetryRouter extends CustomRouter {
               .items(Joi.string())
               .required()
           })
-          .validate(req.body)
+          .validateAsync(req.body)
 
         success
           ? await this.telemetryRepo.removeMany(events)

@@ -23,7 +23,7 @@ const _validateRunRequest = async (req: Request, res: Response, next: NextFuncti
         botId: Joi.string().required(),
         token: Joi.string().required()
       })
-      .validate(req.body)
+      .validateAsync(req.body)
   } catch (err) {
     return next(new BadRequestError(err))
   }
@@ -45,7 +45,7 @@ const _validateListActionsRequest = async (req: Request, res: Response, next: Ne
       .keys({
         botId: Joi.string().required()
       })
-      .validate(req.params)
+      .validateAsync(req.params)
   } catch (err) {
     return next(new BadRequestError(err))
   }

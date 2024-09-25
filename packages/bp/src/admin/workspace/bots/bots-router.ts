@@ -265,7 +265,7 @@ class BotsRouter extends CustomAdminRouter {
       this.needPermissions('write', this.resource),
       this.asyncMiddleware(async (req, res) => {
         const botId = req.params.botId
-        await Joi.object({ revision: Joi.string() }).validate(req.body)
+        await Joi.object({ revision: Joi.string() }).validateAsync(req.body)
 
         await this.botService.rollback(botId, req.body.revision)
 
