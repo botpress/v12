@@ -21,7 +21,10 @@ const eventSchema = {
   type: joi.string().required(),
   channel: joi.string().required(),
   target: joi.string().required(),
-  id: joi.number().required(),
+  id: joi
+    .number()
+    .unsafe()
+    .required(),
   messageId: joi
     .string()
     .guid()

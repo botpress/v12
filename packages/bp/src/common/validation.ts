@@ -115,7 +115,7 @@ export const WorkspaceCreationSchema = Joi.object().keys({
     .default('external')
     .required(),
   pipelineId: Joi.string()
-    .valid(Object.keys(defaultPipelines))
+    .valid(...Object.keys(defaultPipelines))
     .default('none'),
   authStrategies: Joi.array().items(Joi.string()),
   roles: Joi.array()
