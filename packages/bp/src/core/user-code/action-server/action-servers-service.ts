@@ -4,7 +4,7 @@ import { ActionDefinition, ActionServer, ActionServerWithActions } from 'common/
 import { ConfigProvider } from 'core/config'
 import { TYPES } from 'core/types'
 import { inject, injectable, tagged } from 'inversify'
-import joi, { validate } from 'joi'
+import joi from 'joi'
 import _ from 'lodash'
 
 import { actionServerIdRegex } from '../utils'
@@ -22,7 +22,7 @@ const HttpActionSchema = joi.array().items(
       required: joi.bool(),
       default: joi
         .alternatives()
-        .try([joi.string().allow(''), joi.boolean(), joi.number()])
+        .try(...[joi.string().allow(''), joi.boolean(), joi.number()])
         .optional()
     })
   })
@@ -64,7 +64,7 @@ export class ActionServersService {
     const { enabled, port } = local
 
     const actionServers = [...remotes].filter(r => {
-      const { error } = joi.validate(r, ActionServerSchema)
+      const { error } = ActionServerSchema.validate(r)
 
       if (error) {
         this.logger.error(`Invalid Action Server configuration: ${error.message}`)
@@ -87,7 +87,7 @@ export class ActionServersService {
     let actionDefinitions: ActionDefinition[] | undefined = undefined
     try {
       const { data } = await axios.get(`${actionServer.baseUrl}/actions/${botId}`)
-      const { error } = validate(data, HttpActionSchema)
+      const { error } = HttpActionSchema.validate(data)
       if (error && error.name === 'ValidationError') {
         this.logger.error(
           `Action Server ${actionServer.id} returned invalid Action definitions: ${error.details.map(d => d.message)}`

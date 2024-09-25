@@ -267,7 +267,7 @@ export class ScopedActionService {
       return
     }
 
-    const { error } = joi.validate(response.data, ACTION_SERVER_RESPONSE_SCHEMA)
+    const { error } = ACTION_SERVER_RESPONSE_SCHEMA.validate(response.data)
     if (error) {
       this.tasksRepository.createTask({
         ...taskInfo,

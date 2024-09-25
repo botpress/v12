@@ -15,16 +15,15 @@ import { ActionService, ActionServerResponse, RunActionProps } from '../action-s
 
 const _validateRunRequest = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    await Joi.validate(
-      req.body,
-      Joi.object().keys({
+    await Joi.object()
+      .keys({
         incomingEvent: Joi.object().required(),
         actionArgs: Joi.object().required(),
         actionName: Joi.string().required(),
         botId: Joi.string().required(),
         token: Joi.string().required()
       })
-    )
+      .validate(req.body)
   } catch (err) {
     return next(new BadRequestError(err))
   }
@@ -42,12 +41,11 @@ const _validateRunRequest = async (req: Request, res: Response, next: NextFuncti
 
 const _validateListActionsRequest = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    await Joi.validate(
-      req.params,
-      Joi.object().keys({
+    await Joi.object()
+      .keys({
         botId: Joi.string().required()
       })
-    )
+      .validate(req.params)
   } catch (err) {
     return next(new BadRequestError(err))
   }

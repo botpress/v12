@@ -253,7 +253,7 @@ export class EventEngine {
   }
 
   private validateMiddleware(middleware: sdk.IO.MiddlewareDefinition) {
-    const result = joi.validate(middleware, mwSchema)
+    const result = joi.object(mwSchema).validate(middleware)
     if (result.error) {
       throw new VError(result.error, 'Invalid middleware definition')
     }
@@ -265,7 +265,7 @@ export class EventEngine {
       return
     }
 
-    const result = joi.validate(event, eventSchema)
+    const result = joi.object(eventSchema).validate(event)
     if (result.error) {
       throw new VError(result.error, 'Invalid Botpress Event')
     }
