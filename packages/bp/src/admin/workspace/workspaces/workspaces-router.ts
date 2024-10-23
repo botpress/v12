@@ -30,7 +30,7 @@ class WorkspacesRouter extends CustomAdminRouter {
           throw new InvalidOperationError('Botpress Pro must be enabled')
         }
 
-        const { value, error } = Joi.validate(req.body, WorkspaceCreationSchema)
+        const { value, error } = WorkspaceCreationSchema.validate(req.body)
         if (error) {
           throw new InvalidOperationError(`An error occurred while creating the workspace: ${error.message}`)
         }
@@ -45,7 +45,7 @@ class WorkspacesRouter extends CustomAdminRouter {
       this.asyncMiddleware(async (req, res) => {
         const { workspaceId } = req.params
 
-        const { error, value } = Joi.validate(req.body, {
+        const { error, value } = Joi.object({
           name: Joi.string()
             .max(50)
             .required(),
@@ -56,7 +56,7 @@ class WorkspacesRouter extends CustomAdminRouter {
             .max(50)
             .allow('')
             .optional()
-        })
+        }).validate(req.body)
 
         if (error) {
           throw new InvalidOperationError(`An error occurred while updating the workspace: ${error.message}`)
@@ -74,7 +74,7 @@ class WorkspacesRouter extends CustomAdminRouter {
         const { pipelineId, resetStage, updateCustom, pipeline } = req.body
 
         if (updateCustom && pipeline) {
-          const { error } = Joi.validate(pipeline, PipelineSchema)
+          const { error } = PipelineSchema.validate(pipeline)
           if (error) {
             throw new InvalidOperationError(`An error occurred while creating the pipeline: ${error.message}`)
           }

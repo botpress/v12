@@ -61,7 +61,7 @@ export const monitoringMiddleware = (req, res, next) => {
 }
 
 export const validateRequestSchema = (property: string, req: Request, schema: Joi.AnySchema) => {
-  const result = Joi.validate(req[property], schema)
+  const result = schema.validate(req[property])
 
   if (result.error) {
     throw new BadRequestError(result.error.message)

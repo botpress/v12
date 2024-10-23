@@ -21,7 +21,10 @@ const eventSchema = {
   type: joi.string().required(),
   channel: joi.string().required(),
   target: joi.string().required(),
-  id: joi.number().required(),
+  id: joi
+    .number()
+    .unsafe()
+    .required(),
   messageId: joi
     .string()
     .guid()
@@ -253,7 +256,7 @@ export class EventEngine {
   }
 
   private validateMiddleware(middleware: sdk.IO.MiddlewareDefinition) {
-    const result = joi.validate(middleware, mwSchema)
+    const result = joi.object(mwSchema).validate(middleware)
     if (result.error) {
       throw new VError(result.error, 'Invalid middleware definition')
     }
@@ -265,7 +268,7 @@ export class EventEngine {
       return
     }
 
-    const result = joi.validate(event, eventSchema)
+    const result = joi.object(eventSchema).validate(event)
     if (result.error) {
       throw new VError(result.error, 'Invalid Botpress Event')
     }

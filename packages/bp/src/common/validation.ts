@@ -111,11 +111,11 @@ export const WorkspaceCreationSchema = Joi.object().keys({
     .optional()
     .allow(''),
   audience: Joi.string()
-    .valid(['internal', 'external'])
+    .valid(...['internal', 'external'])
     .default('external')
     .required(),
   pipelineId: Joi.string()
-    .valid(Object.keys(defaultPipelines))
+    .valid(...Object.keys(defaultPipelines))
     .default('none'),
   authStrategies: Joi.array().items(Joi.string()),
   roles: Joi.array()
@@ -129,5 +129,5 @@ export const PipelineSchema = Joi.array().items({
   action: Joi.string().required(),
   reviewers: Joi.array().items({ email: Joi.string(), strategy: Joi.string() }),
   minimumApprovals: Joi.number(),
-  reviewSequence: Joi.string().valid(['serial', 'parallel'])
+  reviewSequence: Joi.string().valid(...['serial', 'parallel'])
 })

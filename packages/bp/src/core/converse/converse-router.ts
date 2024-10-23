@@ -48,7 +48,7 @@ export class ConverseRouter extends CustomRouter {
       this.httpServer.extractExternalToken,
       this.asyncMiddleware(async (req, res) => {
         try {
-          await joi.validate(req.body, conversePayloadSchema)
+          await joi.object(conversePayloadSchema).validateAsync(req.body)
         } catch (err) {
           throw new StandardError('Invalid payload', err)
         }
