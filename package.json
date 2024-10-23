@@ -83,7 +83,7 @@
     "@types/ioredis": "^4.0.10",
     "@types/jest": "^27.4.0",
     "@types/jest-environment-puppeteer": "^5.0.0",
-    "@types/jsonwebtoken": "^8.5.8",
+    "@types/jsonwebtoken": "9.0.0",
     "@types/lodash": "^4.14.116",
     "@types/lru-cache": "^5.1.0",
     "@types/mime-types": "^2.1.0",
