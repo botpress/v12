@@ -84,8 +84,9 @@ const BotHealth: FC<Props> = props => {
         columns: [
           {
             Header: 'Status',
+            id: `status-${key}`,
             Cell: cell => {
-              switch (_.get(cell.original, `data[${key}].status`)) {
+              switch (_.get(cell.original.data[`${key}`], 'status')) {
                 default:
                   return 'N/A'
                 case 'unhealthy':
@@ -99,25 +100,28 @@ const BotHealth: FC<Props> = props => {
             Filter: filterStatus,
             filterable: true,
             width: 100,
-            accessor: `data[${key}].status`
+            accessor: row => _.get(row.data[`${key}`], 'status', 0)
           },
           {
             Header: 'Critical',
+            id: `critical-${key}`,
             width: 60,
             className: 'center',
-            accessor: `data[${key}].criticalCount`
+            accessor: row => _.get(row.data[`${key}`], 'criticalCount', 0)
           },
           {
             Header: 'Errors',
+            id: `error-${key}`,
             width: 60,
             className: 'center',
-            accessor: `data[${key}].errorCount`
+            accessor: row => _.get(row.data[`${key}`], 'errorCount', 0)
           },
           {
             Header: 'Warnings',
+            id: `warning-${key}`,
             width: 60,
             className: 'center',
-            accessor: `data[${key}].warningCount`
+            accessor: row => _.get(row.data[`${key}`], 'warningCount', 0)
           }
         ]
       }
