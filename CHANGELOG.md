@@ -1,3 +1,12 @@
+## [12.31.9](https://github.com/botpress/v12/compare/v12.31.8...v12.31.9) (2024-10-24)
+
+
+### Bug Fixes
+
+* **monitoring:** per bot count ([#1844](https://github.com/botpress/v12/issues/1844)) ([6bbc463](https://github.com/botpress/v12/commit/6bbc463c3e98df4d8a393935a794537e864ba089))
+
+
+
 ## [12.31.8](https://github.com/botpress/v12/compare/v12.31.7...v12.31.8) (2024-05-15)
 
 
