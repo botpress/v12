@@ -59,7 +59,7 @@ export const validateSdkApiPayload = (fnScope: string, validationSchema?: Joi.Ob
 
   try {
     if (validations[fnScope]) {
-      await Joi.validate(req.body, validations[fnScope])
+      await validations[fnScope].validateAsync(req.body)
     }
 
     next()

@@ -26,15 +26,14 @@ class LanguagesRouter extends CustomAdminRouter {
 
   private async getExtraLangs(): Promise<any[]> {
     const { additionalLanguages } = await this.configProvider.getBotpressConfig()
-    const { error } = Joi.validate(
-      additionalLanguages,
-      Joi.array().items(
+    const { error } = Joi.array()
+      .items(
         Joi.object({
           name: Joi.string().required(),
           code: Joi.string().required()
         })
       )
-    )
+      .validate(additionalLanguages)
 
     if (error) {
       this.logger.warn('Additional languages are not valid')

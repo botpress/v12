@@ -164,7 +164,7 @@ export class Botpress {
       return
     }
 
-    const { error } = joi.validate(actionServers, ActionServersConfigSchema)
+    const { error } = ActionServersConfigSchema.validate(actionServers)
     if (error) {
       this.logger.error(`Invalid actionServers configuration: ${error}`)
       return
