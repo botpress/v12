@@ -35,6 +35,9 @@ There are a few ways to get started with Botpress v12:
       <a href="https://labs.play-with-docker.com?stack=https://raw.githubusercontent.com/botpress/v12/master/examples/docker-compose/docker-compose.yml" class="btn btn-default btn-lg">
         <img src="https://cdn.jsdelivr.net/gh/play-with-docker/stacks@cff22438/assets/images/button.png">
       </a> &nbsp;
+      <a href="https://elest.io/open-source/botpress" class="btn btn-default btn-lg">
+        <img alt="Deploy to Elestio" src="https://elest.io/images/logos/deploy-to-elestio-btn.png" height="40">
+      </a>
   </center>
 
 ## Documentation
