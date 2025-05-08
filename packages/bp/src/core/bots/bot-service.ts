@@ -150,7 +150,7 @@ export class BotService {
   async addBot(bot: BotConfig, botTemplate: BotTemplate): Promise<void> {
     this.stats.track('bot', 'create')
 
-    const { error } = Joi.validate(bot, BotCreationSchema)
+    const { error } = BotCreationSchema.validate(bot)
     if (error) {
       throw new InvalidOperationError(`An error occurred while creating the bot: ${error.message}`)
     }
@@ -168,7 +168,7 @@ export class BotService {
   async updateBot(botId: string, updatedBot: Partial<BotConfig>): Promise<void> {
     this.stats.track('bot', 'update')
 
-    const { error } = Joi.validate(updatedBot, BotEditSchema)
+    const { error } = BotEditSchema.validate(updatedBot)
     if (error) {
       throw new InvalidOperationError(`An error occurred while updating the bot: ${error.message}`)
     }

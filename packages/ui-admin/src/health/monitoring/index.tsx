@@ -15,10 +15,12 @@ import {
   LineChart,
   ResponsiveContainer,
   Tooltip,
+  TooltipProps,
   XAxis,
   YAxis
 } from 'recharts'
 
+import { NameType, ValueType } from 'recharts/types/component/DefaultTooltipContent'
 import CheckRequirements from '~/app/common/CheckRequirements'
 import Dropdown from '~/app/common/Dropdown'
 import LoadingSection from '~/app/common/LoadingSection'
@@ -171,7 +173,7 @@ class Monitoring extends Component<Props, State> {
     this.setState({ autoRefresh, intervalId })
   }
 
-  renderTooltip = ({ active, payload, label }) => {
+  renderTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
     if (active && payload) {
       return <ChartTooltip payload={payload} uniqueHosts={this.state.uniqueHosts} date={label} />
     }
